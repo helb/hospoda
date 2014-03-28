@@ -6,7 +6,7 @@
       "fast-render": {},
       "collection2": {},
       "buzz.js": {},
-      "scss": {}
+      "moment-with-langs": {}
     },
     "packages": {
       "chatworks": {
@@ -29,10 +29,10 @@
         "tag": "v1.1.0.1",
         "commit": "5c579c9833a6633a38fb05db928a09ac0a3bbc7e"
       },
-      "scss": {
-        "git": "https://github.com/fourseven/meteor-scss.git",
-        "tag": "v0.8.3",
-        "commit": "84fa8b09766e85a9e85b5606903f4222b7dd7605"
+      "moment-with-langs": {
+        "git": "https://github.com/jeeeyul/meteor-moment-with-langs.git",
+        "tag": "v2.5.1",
+        "commit": "75f725898f6d5c3dddc54f1f619fe3b184f596a2"
       },
       "headers": {
         "git": "https://github.com/gadicohen/meteor-headers",
@@ -41,8 +41,8 @@
       },
       "simple-schema": {
         "git": "https://github.com/aldeed/meteor-simple-schema.git",
-        "tag": "v0.2.44",
-        "commit": "08033dca60230df574160a727ede718ec04321ec"
+        "tag": "v0.2.45",
+        "commit": "27a5a943a70a7376c90f18d2e2a4a122c6fc73fb"
       },
       "inject-initial": {
         "git": "https://github.com/gadicc/meteor-inject-initial.git",

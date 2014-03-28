@@ -1,0 +1,186 @@
+section#orders{
+	background: #333;
+	color:#fff;
+	height:59%;
+	font-size: 1rem;
+	line-height: 1.2rem;
+	overflow-y: scroll;
+}
+
+section#orders ul{
+	list-style: none;
+}
+
+
+
+section#orders ul li{
+	height: 4rem;
+		background: #333;
+	-webkit-box-shadow: 0px 2px 0px #222;
+	border-bottom: 1px solid #444;
+	/*margin-bottom: 1px;*/
+	/*overflow: hidden;*/
+
+}
+
+section#orders ul li h3{
+	float:left;
+	width:75%;
+	height: 4rem;
+	background: transparent;
+	font-size: 1.2rem;
+	line-height: 1.2rem;
+	color: #ddd;
+	text-shadow: none;
+	border: none;
+	padding: 0.5em 0 0 0.5em;
+	cursor: default;
+	display: block;
+}
+
+
+section#orders ul li ul.info{
+	float:left;
+	list-style: none;
+	height: 4rem;
+	width:25%;
+	padding:0.5rem 0.5rem 0 0;
+	text-align: right;
+/*	font-size: 1rem;
+	line-height: 1.2rem;*/
+	cursor: default;
+	height:4rem;
+	/*display: block;*/
+}
+
+section#orders ul li ul.info li{
+	text-align: right;
+	background: transparent;
+	border: 0;
+	-webkit-box-shadow:none;
+	height: 1rem;
+}
+
+section#orders ul li ul.info li.table, section#orders ul li ul.info li.price{
+	color: #888;
+}
+
+nav.orderbuttons{
+	display: none;
+	float: right;
+	margin-top: -4rem;
+	}
+
+section#orders ul li button{
+	border:0;
+	height: 4rem;
+	width: 4rem;
+	font-size:3em;
+	color:#fff;
+	display: 0;
+	padding: 0;
+	cursor: pointer;
+	text-shadow: rgba(0,0,0,.5) 0px 1px 0px;
+	background: transparent;
+}
+
+section#orders ul li:hover{
+	background: #222;
+	-webkit-box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.75);
+	border-bottom: 1px solid #444;
+}
+
+section#orders ul li:hover h3{
+	color:#555;
+}
+
+section#orders ul li:hover ul.info{
+	color:#555;
+}
+
+section#orders ul li:hover nav.orderbuttons{
+	display: block;
+}
+
+section#orders ul li button:hover{
+	text-shadow: rgba(0,0,0,.5) 0px -1px 0px;
+	background: #ed5454;
+	-webkit-box-shadow: 0px 2px 0px #9a1b1b;
+	border-bottom: 1px solid #f67f7f;
+}
+
+section#orders ul li button.side:hover{
+	background: #3aa6d0;
+	-webkit-box-shadow: 0px 2px 0px #134b61;
+	border-bottom: 1px solid #6cb0ca;
+}
+
+section#orders ul li button.issue:hover{
+	background: #98ed00;
+	-webkit-box-shadow: 0px 2px 0px #639a00;
+	border-bottom: 1px solid #c6f66f;
+}
+
+/* cancelled */
+
+section#orders ul li.cancelled *{
+	opacity: 0.25;
+}
+
+section#orders ul li.cancelled h3{
+	border-left: 0.5em solid #666;
+	text-decoration: line-through;
+	}
+
+section#orders ul li.cancelled:hover{
+	background: #333;
+	-webkit-box-shadow: none;
+}
+
+section#orders ul li.cancelled:hover button{
+	display: none;
+}
+
+section#orders ul li.cancelled:hover span{
+	display: inline;
+}
+
+
+section#orders ul li.cancelled:hover h3{
+	width: 75%;
+	color: #ddd;
+}
+
+/* cooking */
+
+section#orders ul li.cooking h3{
+	border-left: 0.5em solid #ffdc40;
+}
+
+/* cooked */
+
+section#orders ul li.cooked h3, section#orders ul li.for-me h3{
+	border-left: 0.5em solid #acf53d;
+}
+
+section#orders ul li.cooked h3{
+	background: #689f14;
+	color:#fff;
+}
+
+section#orders ul li.cooked:hover h3{
+	color:#fff;
+}
+
+
+/* new */
+
+section#orders ul li.new h3{
+	border-left: 0.5em solid #de0052;
+}
+
+/* issued */
+
+section#orders ul li.issued h3{
+	border-left: 0.5em solid #acf53d;
+}

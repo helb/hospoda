@@ -21,6 +21,18 @@ Template.orders.orders = function () {
   return Orders.find({}, { sort: { created: -1 }});
 }
 
+
+Handlebars.registerHelper('equal', function(lvalue, rvalue, options) {
+    if (arguments.length < 3)
+        throw new Error("Handlebars Helper equal needs 2 parameters");
+    if( lvalue!=rvalue ) {
+        return options.inverse(this);
+    } else {
+        return options.fn(this);
+    }
+});
+
 Template.orders.meals = function (order) {
   return Meals.find({_id:parent.meal_id}).fetch();
 }
+

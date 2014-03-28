@@ -6,7 +6,6 @@
 standard-app-packages
 autopublish
 insecure
-preserve-inputs
 accounts-ui
 accounts-password
 chatworks
@@ -14,4 +13,3 @@ fast-render
 collection2
 buzz.js
 accounts-base
-scss

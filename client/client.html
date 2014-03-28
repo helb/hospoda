@@ -4,7 +4,7 @@
 
 <body>
 <section id="main">
-	<nav id="login">{{loginButtons}}</nav>
+	<nav id="login">{{>loginButtons}}</nav>
   <section id="meals">{{> meals}}</section>
 </section>
 <section id="sidebar">
@@ -27,7 +27,26 @@
 <template name="orders">
 	<ul>
   	{{#each orders}}
-      <li data-order="{{_id}}"><h3>{{meal_id}} {{#if side_id}}+&nbsp;{{side_id}}{{/if}}</h3><button class="cancel">&times;</button><button class="side">+</button><span class="price">{{price}},– Kč</span></li>
-  	{{/each}}
+      <li data-order="{{_id}}" class="order{{#if is_new}} new{{/if}}{{#if is_cooking}} cooking{{/if}}{{#if is_cooked}} cooked{{/if}}{{#if is_cancelled}} cancelled{{/if}}{{#if is_issued}} issued{{/if}}">
+
+      <h3>{{meal_title}} {{#if side_id}}+&nbsp;{{side_title}}{{/if}}</h3>
+
+      <ul class="info">
+        <li class="time">{{time_created}}</li>
+        <li class="table">{{table_title}} {{author_name}}</li>
+        <li class="price">{{price}},– Kč</li>
+      </ul>
+
+      <nav class="orderbuttons">
+          {{#if is_new}}<button class="side">+</button>{{/if}}
+          {{#if is_cooking}}
+            {{#unless side_id}}<button class="side">+</button>{{/unless}}
+          {{/if}}
+          {{#if is_new}}<button class="cancel">&times;</button>{{/if}}
+          {{#if is_cooked}}<button class="issue">&#10003;</button>{{/if}}
+      </nav>
+
+      </li>
+      	{{/each}}
   </ul>
 </template>
