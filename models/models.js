@@ -124,6 +124,23 @@ Orders = new Meteor.Collection("orders", {
         }
     }),
      virtualFields: {
+     /*   final_price: function(order) {
+            if(order.meal_id){
+                fprice += Meals.findOne({_id: order.meal_id}).price;
+                if(order.side_id){
+                    fprice += Meals.findOne({_id: order.side_id}).price;
+                    if(order.table_id){
+                        fprice += Tables.findOne({_id: order.table_id}).price;
+                    } else {
+                        return fprice;
+                    }
+                } else {
+                    return fprice;
+                }
+            } else {
+                return fprice;
+            }
+        },*/
         meal_title: function(order) {
             if(order.meal_id){
                 return Meals.findOne({_id: order.meal_id}).title;
