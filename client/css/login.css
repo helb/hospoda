@@ -1,8 +1,6 @@
 nav#login{
-	position:absolute;
-	left: 0;
-	top: 0;
-	background: #999;
-	color: #0099ff;
-	display: none;
+	color: #fff;
+	right: 28%;
+	top:0.5em;
+	position: absolute;
 }
