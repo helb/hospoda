@@ -1,0 +1,77 @@
+section#orders{
+	background: #333;
+	color:#fff;
+	height:68%;
+}
+
+section#orders ul{
+	list-style: none;
+}
+
+section#orders ul li{
+	height: 3rem;
+	background: #222;
+	border-bottom: 1px solid #333;
+}
+
+section#orders ul li h3{
+	float:left;
+	width:75%;
+	background: transparent;
+	font-size: 1rem;
+	color: #ddd;
+	text-shadow: none;
+}
+
+section#orders ul li span.price{
+	float:left;
+	width:25%;
+	// min-width:4rem;
+	padding:1.5rem 0.5rem 0 0;
+	text-align: right;
+	font-size: 0.9rem;
+}
+
+section#orders ul li button{
+	display: none;
+	border:0;
+	height: 3rem;
+	float:right;
+	width: 3rem;
+	font-size:3em;
+	background: #333;
+	color:#fff;
+	display: 0;
+	padding: 0;
+	cursor: pointer;
+	text-shadow: rgba(0,0,0,.5) 0px 1px 0px;
+}
+
+section#orders ul li:hover{
+	background: #444;
+	color:#fff;
+}
+
+section#orders ul li:hover h3{
+	width: 60%;
+}
+
+section#orders ul li:hover button{
+	display: block;
+}
+
+section#orders ul li button:hover{
+		background: #ed5454;
+/* 	-webkit-transition-property: background-color;
+	-webkit-transition-duration: .15s;
+	-webkit-transition-timing-function: ease-in-out;
+	-webkit-transition-delay: 0; */
+}
+
+section#orders ul li button.side:hover{
+		background: #33cccc;
+}
+
+section#orders ul li:hover span.price{
+	display: none;
+}

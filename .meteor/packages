@@ -9,10 +9,9 @@ insecure
 preserve-inputs
 accounts-ui
 accounts-password
-autocompletion
 chatworks
 fast-render
 collection2
 buzz.js
-jquery-ui-bootstrap
 accounts-base
+scss

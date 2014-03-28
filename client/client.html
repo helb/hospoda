@@ -1,16 +1,33 @@
 <head>
-  <title>pets</title>
+  <title>saloon</title>
 </head>
 
 <body>
-<nav id="login">{{loginButtons}}</nav>
-
-<section id="chat">{{>chatworks}}</section>
-  {{> hello}}
+<section id="main">
+	<nav id="login">{{loginButtons}}</nav>
+  <section id="meals">{{> meals}}</section>
+</section>
+<section id="sidebar">
+	<section id="orders">{{> orders}}</section>
+	<section id="chat">{{> chatworks}}</section>
+</section>
 </body>
 
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click" />
+<template name="meals">
+   {{#each categories}}
+   <h3 class="{{_id}}">{{title}}</h3>
+   <ul class="meals {{_id}}">
+       {{#each meals _id}}
+          <li data-meal="{{_id}}"><button>{{title}}</button><span>{{price}},– Kč</span></li>
+       {{/each}}
+   </ul>
+   {{/each}}
+</template>
+
+<template name="orders">
+	<ul>
+  	{{#each orders}}
+      <li data-order="{{_id}}"><h3>{{meal_id}} {{#if side_id}}+&nbsp;{{side_id}}{{/if}}</h3><button class="cancel">&times;</button><button class="side">+</button><span class="price">{{price}},– Kč</span></li>
+  	{{/each}}
+  </ul>
 </template>

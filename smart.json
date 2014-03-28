@@ -1,10 +1,9 @@
 {
   "packages": {
-    "autocompletion": {},
     "chatworks": {},
     "fast-render": {},
     "collection2": {},
     "buzz.js": {},
-    "jquery-ui-bootstrap": {}
+    "scss": {}
   }
 }

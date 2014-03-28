@@ -2,19 +2,13 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "autocompletion": {},
       "chatworks": {},
       "fast-render": {},
       "collection2": {},
       "buzz.js": {},
-      "jquery-ui-bootstrap": {}
+      "scss": {}
     },
     "packages": {
-      "autocompletion": {
-        "git": "https://github.com/sebdah/meteor-autocompletion.git",
-        "tag": "v0.1.4",
-        "commit": "821cb4a85d94132edfc26e8f0c2a432c95485e79"
-      },
       "chatworks": {
         "git": "https://github.com/Pent/chatworks.git",
         "tag": "v1.6.0",
@@ -35,25 +29,25 @@
         "tag": "v1.1.0.1",
         "commit": "5c579c9833a6633a38fb05db928a09ac0a3bbc7e"
       },
-      "jquery-ui-bootstrap": {
-        "git": "https://github.com/TimHeckel/meteor-jquery-ui-bootstrap.git",
-        "tag": "v0.1.2",
-        "commit": "fa742a85639307003e105898e15b631394b63509"
-      },
-      "jquery-ui": {
-        "git": "https://github.com/TimHeckel/meteor-jquery-ui.git",
-        "tag": "v1.9.2",
-        "commit": "c437d45edcf1367df8d5ffa8bad2867758030bd2"
+      "scss": {
+        "git": "https://github.com/fourseven/meteor-scss.git",
+        "tag": "v0.8.3",
+        "commit": "84fa8b09766e85a9e85b5606903f4222b7dd7605"
       },
       "headers": {
         "git": "https://github.com/gadicohen/meteor-headers",
         "branch": "master",
-        "commit": "36116a84a66130dd4d4e3901a0bd7ebb680acdac"
+        "commit": "8dc6d6445def7151e2723b6f7e74818e1fe4b5b4"
       },
       "simple-schema": {
         "git": "https://github.com/aldeed/meteor-simple-schema.git",
         "tag": "v0.2.44",
         "commit": "08033dca60230df574160a727ede718ec04321ec"
+      },
+      "inject-initial": {
+        "git": "https://github.com/gadicc/meteor-inject-initial.git",
+        "tag": "v0.0.3",
+        "commit": "7ebbbbdc3c4377bb9bbb1b683971451375d2233f"
       }
     }
   }

@@ -1,0 +1,46 @@
+#chatworks-header, .btn-chatworks{
+	display: none;
+}
+
+#chatworks-send-box input{
+	width: 100%;
+	background:#222;
+	font-family: 'open_sanscondensed_light';
+}
+
+#chatworks-send-box input::-webkit-input-placeholder{
+	color:#444;
+}
+
+#chatworks-messages{
+	background: #181818;
+	-webkit-box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.25);
+}
+
+
+section#chat{
+	display: block;
+	height: 25%;
+}
+
+section#chat span.handle{
+	width:20%;
+	padding: 0 0.25em 0 0;
+	font-family: 'open_sanscondensed_light';
+}
+
+section#chat span.message{
+	width:75%;
+	border-left: 1px solid #444;
+	font-family: 'open_sanscondensed_light';
+}
+
+
+section#chat span.message{
+	width:70%;
+	padding: 0 0 0 0.25em;
+}
+
+section#chat div.message{
+	padding: 0 0.5em 0 0.5em;
+}
