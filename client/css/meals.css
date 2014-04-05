@@ -6,8 +6,8 @@ ul.meals{
 ul.meals li{
 	float: left;
 	width:12.5%;
-	min-width: 9em;
-	height: 6em;
+	min-width: 7rem;
+	height: 5rem;
 	background:#333;
 	display: box;
 	overflow:hidden;
@@ -15,6 +15,11 @@ ul.meals li{
 		-webkit-box-shadow: 0px 2px 0px #222;
 	border-bottom: 1px solid #444;
 	margin-bottom: 1px;
+}
+
+ul.variants li{
+	width: 25%;
+	min-width: 10rem;
 }
 
 ul.meals li button{
@@ -33,6 +38,7 @@ ul.meals li button{
 	padding: 0.5em;
 	font-family: 'open_sanscondensed_light';
 	text-transform: uppercase;
+	outline: none;
 }
 
 ul.meals li span{
@@ -80,9 +86,10 @@ ul.meals li:hover button{
 
 }
 
-section#meals h3{
-	font-size: 1em;
-	padding: 0.4em;
+h3.category{
+	font-size: 0.8rem;
+	height: 1.4rem;
+	padding: 0.2rem 0 0.2rem 0.4rem;
 	float:left;
 	width:100%;
 	display:block;
@@ -99,10 +106,39 @@ section#meals h3{
 }
 
 
-section#meals .AAP3KAzdbpvop7Z5C{
+/* section#meals .AAP3KAzdbpvop7Z5C{
 	display:none;
+} */
+
+h3.category:first-child{
+	margin: 0;
 }
 
-section#meals .Pessaix6Q7ggcC7CK{
-	margin: 0;
+/*section#variants{
+	margin-bottom: 7.2rem;
+}
+
+section#sides{
+	margin-bottom: 14.4rem;
+}*/
+
+ul.variants li.chosen, ul.sides li.chosen, ul.condiments li.chosen{
+	color: red;
+	-webkit-box-shadow: 0px 2px 0px #124b61;
+	border-bottom: 1px solid #6cb0ca;
+	border-right: 0;
+}
+
+ul.variants li.chosen span, ul.sides li.chosen span, ul.condiments li.chosen span{
+	color: #fff;
+	background: #3aa6d0;
+}
+
+ul.variants li.chosen button, ul.sides li.chosen button, ul.condiments li.chosen button{
+	color: #fff;
+	background: #3aa6d0;
+	height:70%;
+	cursor: pointer;
+	text-shadow: rgba(0,0,0,.25) 0px 1px 0px;
+	padding: 0.25em 0.5em 0.25em 0.5em;
 }

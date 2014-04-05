@@ -1,186 +1,309 @@
 section#orders{
 	background: #333;
 	color:#fff;
-	height:59%;
+	height:94%;
 	font-size: 1rem;
 	line-height: 1.2rem;
 	overflow-y: scroll;
 }
 
-section#orders ul{
+/* section#orders.openedchat{
+	height: 50%;
+} */
+
+section#orders ul.orders{
 	list-style: none;
 }
 
 
 
-section#orders ul li{
-	height: 4rem;
-		background: #333;
+section#orders ul.orders li{
+	height: 2rem;
+	background: #333;
 	-webkit-box-shadow: 0px 2px 0px #222;
 	border-bottom: 1px solid #444;
-	/*margin-bottom: 1px;*/
+	margin-bottom: 1px;
 	/*overflow: hidden;*/
 
 }
 
-section#orders ul li h3{
+section#orders ul.orders li h3{
 	float:left;
 	width:75%;
-	height: 4rem;
+	height: 2rem;
 	background: transparent;
 	font-size: 1.2rem;
-	line-height: 1.2rem;
+	line-height: 2rem;
 	color: #ddd;
 	text-shadow: none;
 	border: none;
-	padding: 0.5em 0 0 0.5em;
+	padding: 0em 0 0 0.3em;
 	cursor: default;
 	display: block;
+	overflow: hidden;
+	word-break: break-all;
+	text-shadow: rgba(0,0,0,.75) 0px 1px 0px;
+	-webkit-mask-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 65%, rgba(0, 0, 0, 0) 100%);
 }
 
 
-section#orders ul li ul.info{
+section#orders ul.orders li ul.info{
 	float:left;
 	list-style: none;
-	height: 4rem;
+	height: 2rem;
 	width:25%;
-	padding:0.5rem 0.5rem 0 0;
+	padding:0.3rem 0.3rem 0 0;
 	text-align: right;
 /*	font-size: 1rem;
 	line-height: 1.2rem;*/
 	cursor: default;
-	height:4rem;
+	height:2rem;
 	/*display: block;*/
+	font-size: 0.9rem;
+	/*line-height: 0.3rem;*/
+	/*border: 1px solid red;*/
+	text-shadow: rgba(0,0,0,.75) 0px 1px 0px;
+	text-align: right;
 }
 
-section#orders ul li ul.info li{
+section#orders ul.orders li ul.info li.table{
+	color: #888;
+	text-transform: uppercase;
+}
+
+
+section#orders ul.orders li ul.info li{
 	text-align: right;
 	background: transparent;
 	border: 0;
 	-webkit-box-shadow:none;
-	height: 1rem;
+	height: 0.9rem;
+	margin-top: -0.05rem;
 }
-
-section#orders ul li ul.info li.table, section#orders ul li ul.info li.price{
-	color: #888;
+section#orders ul.orders li ul.info li:first-child{
+	margin-top: -0.35rem;
 }
 
 nav.orderbuttons{
 	display: none;
 	float: right;
-	margin-top: -4rem;
+	margin-top: -2.0rem;
 	}
 
-section#orders ul li button{
+section#orders ul.orders li button{
 	border:0;
-	height: 4rem;
-	width: 4rem;
-	font-size:3em;
+	height: 1.8rem;
+	width: 2rem;
+	font-size:1.5em;
 	color:#fff;
 	display: 0;
 	padding: 0;
 	cursor: pointer;
 	text-shadow: rgba(0,0,0,.5) 0px 1px 0px;
 	background: transparent;
+	overflow: hidden;
+	padding: 0.2rem 0 0 0;
 }
 
-section#orders ul li:hover{
+section#orders ul.orders li:hover{
 	background: #222;
 	-webkit-box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.75);
 	border-bottom: 1px solid #444;
 }
 
-section#orders ul li:hover h3{
+section#orders ul.orders li:hover h3{
+	/*color:#555;*/
+	/*-webkit-mask-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 65%, rgba(0, 0, 0, 0) 80%);*/
+}
+
+section#orders ul.orders li:hover ul.info{
 	color:#555;
 }
 
-section#orders ul li:hover ul.info{
-	color:#555;
+section#orders ul.orders li:hover ul.info li.table{
+	color:#444;
 }
 
-section#orders ul li:hover nav.orderbuttons{
+section#orders ul.orders li:hover nav.orderbuttons{
 	display: block;
 }
 
-section#orders ul li button:hover{
+section#orders ul.orders li button:hover{
 	text-shadow: rgba(0,0,0,.5) 0px -1px 0px;
 	background: #ed5454;
 	-webkit-box-shadow: 0px 2px 0px #9a1b1b;
 	border-bottom: 1px solid #f67f7f;
 }
 
-section#orders ul li button.side:hover{
+section#orders ul.orders li button.side:hover{
 	background: #3aa6d0;
 	-webkit-box-shadow: 0px 2px 0px #134b61;
 	border-bottom: 1px solid #6cb0ca;
 }
 
-section#orders ul li button.issue:hover{
+section#orders ul.orders li button.issue:hover{
 	background: #98ed00;
 	-webkit-box-shadow: 0px 2px 0px #639a00;
 	border-bottom: 1px solid #c6f66f;
 }
 
-/* cancelled */
 
-section#orders ul li.cancelled *{
-	opacity: 0.25;
-}
-
-section#orders ul li.cancelled h3{
-	border-left: 0.5em solid #666;
-	text-decoration: line-through;
-	}
-
-section#orders ul li.cancelled:hover{
-	background: #333;
-	-webkit-box-shadow: none;
-}
-
-section#orders ul li.cancelled:hover button{
-	display: none;
-}
-
-section#orders ul li.cancelled:hover span{
-	display: inline;
-}
-
-
-section#orders ul li.cancelled:hover h3{
-	width: 75%;
-	color: #ddd;
-}
 
 /* cooking */
 
-section#orders ul li.cooking h3{
-	border-left: 0.5em solid #ffdc40;
+section#orders ul.orders li.cooking h3{
+	background-color: #ff5300;
 }
+
 
 /* cooked */
 
-section#orders ul li.cooked h3, section#orders ul li.for-me h3{
-	border-left: 0.5em solid #acf53d;
-}
-
-section#orders ul li.cooked h3{
+section#orders ul.orders li.cooked h3{
 	background: #689f14;
 	color:#fff;
+	cursor: pointer;
 }
 
-section#orders ul li.cooked:hover h3{
+section#orders.kuchyne ul.orders li.cooked h3{
+	cursor: default;
+}
+
+section#orders ul.orders li.cooked:hover h3{
 	color:#fff;
 }
 
 
 /* new */
 
-section#orders ul li.new h3{
-	border-left: 0.5em solid #de0052;
+section#orders ul.orders li.new h3{
+	/*border-left: 0.5em solid #de0052;*/
+	background: #de0052;
+}
+
+section#orders ul.orders li.new:hover h3{
+	color: #fff;
+	background-color: #900035;
 }
 
 /* issued */
 
-section#orders ul li.issued h3{
-	border-left: 0.5em solid #acf53d;
+section#orders ul.orders li.issued h3{
+	/*border-left: 0.5em solid #689f14;*/
+
+}
+
+section#orders ul.orders li.issued h3:before{
+	/*content: "✔";*/
+	content: "✓";
+	margin-right: 0.5rem;
+}
+
+section#orders ul.orders li.issued h3:hover{
+	cursor: default;
+}
+
+
+/* cancelled */
+
+section#orders ul.orders li.cancelled *{
+	opacity: 0.15;
+}
+
+section#orders ul.orders li.cancelled h3{
+	text-decoration: line-through;
+		background-color: #333;
+	-webkit-mask-image: none;
+	}
+
+section#orders ul.orders li.cancelled:hover{
+	border-bottom: 1px solid #444;
+	background: #333;
+	-webkit-box-shadow: 0px 2px 0px #222;
+}
+
+section#orders ul.orders li.cancelled:hover button{
+	display: none;
+}
+
+
+section#orders ul.orders li.cancelled:hover h3{
+	/*width: 88%;*/
+	color: #ddd;
+	background: #333;
+	-webkit-mask-image: none;
+
+}
+
+
+span.price{
+	list-style: none;
+	float: right;
+	display: none;
+	font-size: 1.2rem;
+	margin:-2rem 2rem 0 0.5rem;
+	position: relative;
+	z-index: 9999;
+	background: transparent;
+	color: #fff;
+	padding:0.3rem;
+	border: 0;
+	background: transparent;
+	-webkit-box-shadow: none;
+	cursor: default;
+}
+
+li:hover span.price{
+	display: block;
+}
+
+section#orders.kuchyne{
+height: 100%;
+}
+section#orders.kuchyne ul.orders{
+	margin-top: 1.6rem;
+}
+
+section#orders.kuchyne ul.orders li{
+	height: 2.5rem;
+}
+
+section#orders.kuchyne ul.orders li h3, section#orders.kuchyne ul.orders li span.price{
+	height: 2.5rem;
+	line-height: 2.5rem;
+}
+
+section#orders.kuchyne ul.orders li h3{
+	width: 85%;
+	-webkit-mask-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 100%);
+	cursor: pointer;
+}
+
+section#orders.kuchyne ul.orders li.cancelled h3{
+	cursor: default;
+	background-color: #333;
+	-webkit-mask-image: none;
+}
+
+section#orders.kuchyne ul.orders li span.price{
+	margin: -2.4rem 0.5rem 0 0;
+	height: 2rem;
+}
+
+section#orders.kuchyne ul.orders li ul.info{
+	width: 15%;
+	font-size: 1rem;
+}
+
+section#orders.kuchyne ul.orders li ul.info li{
+	height: 1.2rem;
+}
+
+section#orders.kuchyne ul.orders li nav button{
+	height: 2.3rem;
+	width: 2.3rem;
+}
+
+section#orders.kuchyne ul.orders li.cooking:hover h3{
+	color: #fff;
+	background-color: #a63600;
 }

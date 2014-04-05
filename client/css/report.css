@@ -1,0 +1,53 @@
+section#report{
+	width: 90%;
+	margin: 2rem auto;
+	color: #000;
+	/*padding: 2rem;*/
+	font-size: 1.2rem;
+}
+
+section#report table{
+	/*border:1px solid #333;*/
+	width: 100%;
+	background: #fff;
+}
+
+section#report table td, th{
+	padding: 0.4rem;
+}
+
+section#report table thead{
+	background: #666;
+	color: #fff;
+	border-bottom: 2px solid #444;
+}
+
+section#report table th{
+	border-left: 1px solid #444;
+}
+
+section#report table td{
+	border-left: 1px solid #ddd;
+}
+
+section#report table tr{
+	border-bottom: 1px solid #999;
+}
+
+section#report table tr td:nth-child(2), section#report table thead th:nth-child(2){
+	font-weight: bold;
+}
+
+section#report table tr td:nth-child(1), section#report table thead th:nth-child(1){
+	border: 0;
+}
+
+section#report table tr.cancelled{
+	color:#bbb;
+	text-decoration: line-through;
+}
+
+
+section#report table td.price, section#report table td.time{
+	text-align: right;
+}

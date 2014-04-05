@@ -5,9 +5,23 @@ Tables = new Meteor.Collection("tables", {
             label: "Název",
             max: 100
         },
+        room_id: {
+            type: String,
+            label: "Místnost",
+        },
         price: {
             type: Number,
             label: "Cena"
+        }
+    })
+});
+
+Rooms = new Meteor.Collection("rooms", {
+    schema: new SimpleSchema({
+        title: {
+            type: String,
+            label: "Název",
+            max: 100
         }
     })
 });
@@ -22,6 +36,10 @@ Categories = new Meteor.Collection("categories", {
         position: {
             type: Number,
             label: "Pozice"
+        },
+        display: {
+            type: Boolean,
+            label: "Zobrazit na hlavní obrazovce"
         }
     })
 });
@@ -35,7 +53,8 @@ Meals = new Meteor.Collection("meals", {
         },
         active: {
             type: Boolean,
-            label: "Aktivní"
+            label: "Aktivní",
+            autoValue: function(){return true;}
         },
         has_sides: {
             type: Boolean,
@@ -47,17 +66,41 @@ Meals = new Meteor.Collection("meals", {
         },
         is_side: {
             type: Boolean,
-            label: "Příloha"
+            label: "Příloha",
+        },
+        is_condiment: {
+            type: Boolean,
+            label: "Omáčka",
+        },
+        can_half: {
+            type: Boolean,
+            label: "Může být poloviční",
         },
         price: {
             type: Number,
-            label: "Cena"
+            label: "Cena",
+            optional: true
         },
         position: {
             type: Number,
-            label: "Pozice"
-        }
-    })
+            label: "Pozice",
+            optional: true
+        },
+        variant_of: {
+            type: String,
+            label: "Varianta jídla",
+            optional: true
+        },
+    }),
+virtualFields: {
+        default_variant: function(meal) {
+            if(meal.position ==0){
+                return true;
+            } else {
+                return false;
+            }
+        },
+    }
 });
 
 Orders = new Meteor.Collection("orders", {
@@ -77,6 +120,11 @@ Orders = new Meteor.Collection("orders", {
         side_id: {
             type: String,
             label: "Příloha",
+            optional: true
+        },
+        condiment_id: {
+            type: String,
+            label: "Omáčka",
             optional: true
         },
         created: {
@@ -124,23 +172,13 @@ Orders = new Meteor.Collection("orders", {
         }
     }),
      virtualFields: {
-     /*   final_price: function(order) {
-            if(order.meal_id){
-                fprice += Meals.findOne({_id: order.meal_id}).price;
-                if(order.side_id){
-                    fprice += Meals.findOne({_id: order.side_id}).price;
-                    if(order.table_id){
-                        fprice += Tables.findOne({_id: order.table_id}).price;
-                    } else {
-                        return fprice;
-                    }
-                } else {
-                    return fprice;
-                }
+        room_title: function(order) {
+            if(order.table_id){
+                return Rooms.findOne({_id: Tables.findOne({_id: order.table_id}).room_id}).title.split(' ')[0];
             } else {
-                return fprice;
+                return null;
             }
-        },*/
+        },
         meal_title: function(order) {
             if(order.meal_id){
                 return Meals.findOne({_id: order.meal_id}).title;
@@ -151,6 +189,13 @@ Orders = new Meteor.Collection("orders", {
         side_title: function(order) {
             if(order.side_id){
                 return Meals.findOne({_id: order.side_id}).title;
+            } else {
+                return null;
+            }
+        },
+        condiment_title: function(order) {
+            if(order.condiment_id){
+                return Meals.findOne({_id: order.condiment_id}).title;
             } else {
                 return null;
             }
@@ -190,5 +235,39 @@ Orders = new Meteor.Collection("orders", {
                 return null;
             }
         },
+        time_total: function(order) {
+            if(order.issued){
+                time_total = (order.issued - order.created)/60000;
+                return time_total.toFixed(0);
+            } else {
+                return null;
+            }
+        },
+        date: function(order) {
+            if(order.created){
+                day = order.created.getDate();
+                month = order.created.getMonth()+1;
+                return day + ". " + month + ".";
+            } else {
+                return null;
+            }
+        },
+        day_name: function(order) {
+            if(order.created){
+                // day = order.created.getDate();
+                var weekday=new Array(7);
+                weekday[0]="Ne";
+                weekday[1]="Po";
+                weekday[2]="Út";
+                weekday[3]="St";
+                weekday[4]="Čt";
+                weekday[5]="Pá";
+                weekday[6]="So";
+                return weekday[order.created.getDay()];
+                // return day + ". " + month + ".";
+            } else {
+                return null;
+            }
+        }
     }
 });

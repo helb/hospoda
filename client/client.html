@@ -1,52 +1,212 @@
 <head>
-  <title>saloon</title>
+  <title>hospoda</title>
 </head>
-
 <body>
+</body>
+
+<template name="hospoda">
 <section id="main">
 <nav id="login">{{>loginButtons}}</nav>
   <section id="meals">{{> meals}}</section>
+  <section id="variants" class="hidden">{{> variants}}</section>
+  <section id="sides" class="hidden">{{> sides}}</section>
+  <section id="condiments" class="hidden">{{> condiments}}</section>
+  <section id="tables" class="hidden">{{> tables}}</section>
 </section>
 <section id="sidebar">
-	<section id="orders">{{> orders}}</section>
-	<section id="chat">{{> chatworks}}</section>
+  <section id="orders" class="hospoda">{{> orders}}</section>
+  <section id="chat">{{>chat}}</section>
 </section>
-</body>
+<form>
+  <input type="hidden" name="frm_meal">
+  <input type="hidden" name="frm_side">
+  <input type="hidden" name="frm_condiment">
+  <input type="hidden" name="frm_room">
+  <input type="hidden" name="frm_table">
+  <input type="hidden" name="frm_price">
+</form>
+</template>
+
+<template name="kuchyne">
+<section id="main">
+<nav id="login">{{>loginButtons}}</nav>
+<section id="orders" class="kuchyne">
+  <h3 class="category">Objednávky</h3>
+  {{>orders}}
+</section>
+<!--   <section id="meals">{{> meals}}</section>
+<section id="variants" class="hidden">{{> variants}}</section>
+<section id="sides" class="hidden">{{> sides}}</section>
+<section id="condiments" class="hidden">{{> condiments}}</section>
+<section id="tables" class="hidden">{{> tables}}</section> -->
+</section>
+<section id="sidebar">
+  <section id="inventory">…</section>
+  <section id="chat">{{>chat}}</section>
+</section>
+</template>
+
+<template name="report">
+<section id="report">
+  <table>
+    <thead>
+      <th>&nbsp;</th>
+      <th>Zakázka</th>
+      <th>Cena</th>
+      <th>Hospoda</th>
+      <th>Stůl</th>
+      <th>Příjem</th>
+      <th>Kuchyně</th>
+      <th>Uvařeno</th>
+      <th>Vydáno</th>
+      <th>Čas</th>
+    </thead>
+  {{#each orders}}
+    <tr class="order{{#if is_cancelled}} cancelled{{/if}}">
+      <td>{{day_name}}&nbsp;{{date}}</td>
+      <td>{{meal_title}}{{#if side_id}}&nbsp;+&nbsp;{{side_title}}{{/if}}{{#if condiment_id}}&nbsp;+&nbsp;{{condiment_title}}{{/if}}</td>
+      <td class="price">{{price}} Kč</td>
+      <td>{{room_title}}</td>
+      <td>{{table_title}}</td>
+      <td class="time">{{time_created}}</td>
+      <td class="time">{{time_accepted}}</td>
+      <td class="time">{{time_cooked}}</td>
+      <td class="time">{{time_issued}}</td>
+      <td class="time">{{time_total}}{{#if is_issued}}&nbsp;min{{/if}}</td>
+    </tr>
+  {{/each}}
+  </table>
+</section>
+</template>
+
 
 <template name="meals">
    {{#each categories}}
-   <h3 class="{{_id}}">{{title}}</h3>
-   <ul class="meals {{_id}}">
-       {{#each meals _id}}
-          <li data-meal="{{_id}}"><button>{{title}}</button><span>{{price}},– Kč</span></li>
-       {{/each}}
+   <h3 class="category">{{title}}</h3>
+   <ul class="meals">
+    {{#each meals _id}}
+        {{#unless variant_of}}
+          <li class="meal" data-meal="{{_id}}">
+            <button>{{title}}</button>
+            <span>
+            {{#if price}}
+              {{price}},– Kč
+            {{else}}
+              více variant
+            {{/if}}
+            </span>
+            </li>
+        {{/unless}}
+    {{/each}}
    </ul>
    {{/each}}
 </template>
 
+
+
+<template name="variants">
+  <h3 class="category" id="variants-title">Varianty</h3>
+   <ul class="meals variants">
+    {{#each variants _id}}
+      <li class="meal variant{{#if default_variant}} chosen{{/if}}" data-meal="{{_id}}">
+        <button>{{title}}</button>
+        <span>{{price}},– Kč</span>
+      </li>
+    {{/each}}
+   </ul>
+</template>
+
+<template name="sides">
+  <h3 class="category" id="sides-title">Přílohy</h3>
+   <ul class="meals sides">
+    {{#each sides _id}}
+      <li class="meal side" data-meal="{{_id}}">
+        <button>{{title}}</button>
+        <span>{{price}},– Kč</span>
+      </li>
+    {{/each}}
+   </ul>
+</template>
+
+<template name="condiments">
+  <h3 class="category" id="condiments-title">Omáčky</h3>
+   <ul class="meals condiments">
+    {{#each condiments _id}}
+      <li class="meal condiment" data-meal="{{_id}}">
+        <button>{{title}}</button>
+        <span>{{price}},– Kč</span>
+      </li>
+    {{/each}}
+   </ul>
+</template>
+
+<template name="tables">
+<h3 class="category" id="tables-title">Stůl</h3>
+<ul class="rooms">
+  {{#each rooms _id}}
+    <li class="rooms" data-room="{{_id}}">{{title}}</li>
+  {{/each}}
+</ul>
+  <svg>
+    <rect width="25" height="250" x="0" y="30" class="table" data-table="GNT6XuKRb978YFYm5" />         <!-- bar -->
+    <rect width="25" height="200" x="0" y="300" class="table" data-table="uaxQDNQocMiHkE5tz" />       <!-- kuchyně -->
+
+    <rect width="65" height="100" x="100" y="30" class="table" data-table="woJoRt3suRsSJyGhn" />         <!-- 6 -->
+    <rect width="65" height="100" x="100" y="130" class="table" data-table="totYihv9oethxSSmo" />       <!-- 5 -->
+
+    <rect width="100" height="65" x="35" y="435" class="table" data-table="nAi9cuhXJdbf6tSPy" />        <!-- géčko -->
+    <rect width="65" height="100" x="145" y="355" class="table" data-table="XMebTLZ6Hcd2MpKMp" />       <!-- almara -->
+
+    <circle cx="125" cy="312.5" r="40" class="table" data-table="MgMyTJHeFhS9EDe4e" />                <!-- Sud -->
+
+    <rect width="100" height="65" x="200" y="280" class="table" data-table="L95xubXb6WSxRi6Gh" />       <!-- 1 -->
+    <rect width="100" height="65" x="320" y="280" class="table" data-table="fnvFAWuqueH3xZug7" />       <!-- 2 -->
+    <rect width="100" height="65" x="440" y="280" class="table" data-table="h9z9AhW4nkRebhB8" />       <!-- 3 -->
+    <rect width="100" height="65" x="560" y="280" class="table" data-table="2JFTZSP4sywsDFN7s" />       <!-- 4 -->
+
+    <rect width="65" height="100" x="450" y="130" class="table" data-table="g3tiBR3p8DfwKqp9p" />         <!-- pták -->
+    <rect width="65" height="100" x="595" y="130" class="table" data-table="rTgYhxxnsxCTJsuPc" />       <!-- piáno -->
+
+    <rect width="200" height="65" x="220" y="147.5" class="table" data-table="NBtnqg54x6mJXp6gB" />       <!-- střed -->
+
+    <rect width="65" height="100" x="300" y="0" class="table" data-table="424g2CZf4nnXberRu" />         <!-- krb -->
+
+    <rect width="100" height="65" x="400" y="17.5" class="table" data-table="xXPc2KRsvjh8YZRbH" />         <!-- H1 -->
+    <rect width="100" height="65" x="560" y="17.5" class="table" data-table="HH9kYvwHRens4hNQ4" />         <!-- H2 -->
+  </svg>
+</template>
+
+
 <template name="orders">
-	<ul>
+	<ul class="orders">
   	{{#each orders}}
       <li data-order="{{_id}}" class="order{{#if is_new}} new{{/if}}{{#if is_cooking}} cooking{{/if}}{{#if is_cooked}} cooked{{/if}}{{#if is_cancelled}} cancelled{{/if}}{{#if is_issued}} issued{{/if}}">
 
-      <h3>{{meal_title}} {{#if side_id}}+&nbsp;{{side_title}}{{/if}}</h3>
+      <h3>{{meal_title}}{{#if side_id}}&nbsp;+&nbsp;{{side_title}}{{/if}}{{#if condiment_id}}&nbsp;+&nbsp;{{condiment_title}}{{/if}}</h3>
 
       <ul class="info">
         <li class="time">{{time_created}}</li>
-        <li class="table">{{table_title}} {{author_name}}</li>
-        <li class="price">{{price}},– Kč</li>
+        <li class="table">{{room_title}}&nbsp;{{table_title}}</li>
       </ul>
 
+
+
       <nav class="orderbuttons">
-          {{#if is_new}}<button class="side">+</button>{{/if}}
+          <!--{{#if is_new}}<button data-order="{{_id}}" class="side">+</button>{{/if}}
           {{#if is_cooking}}
-            {{#unless side_id}}<button class="side">+</button>{{/unless}}
-          {{/if}}
-          {{#if is_new}}<button class="cancel">&times;</button>{{/if}}
-          {{#if is_cooked}}<button class="issue">&#10003;</button>{{/if}}
+            {{#unless side_id}}<button data-order="{{_id}}" class="side">+</button>{{/unless}}
+          {{/if}}-->
+          {{#if is_new}}<button data-order="{{_id}}" class="cancel">&times;</button>{{/if}}
+          <!-- {{#if is_cooked}}<button data-order="{{_id}}" class="issue">&#10003;</button>{{/if}} -->
       </nav>
+
+       <span class="price">{{price}},– Kč</span>
 
       </li>
       	{{/each}}
   </ul>
+</template>
+
+<template name="chat">
+<nav id="openchat"><span>Chat</span></nav>{{> chatworks}}
 </template>

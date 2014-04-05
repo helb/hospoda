@@ -6,18 +6,19 @@
       "fast-render": {},
       "collection2": {},
       "buzz.js": {},
-      "moment-with-langs": {}
+      "iron-router": {},
+      "pagemaster": {}
     },
     "packages": {
       "chatworks": {
         "git": "https://github.com/Pent/chatworks.git",
-        "tag": "v1.6.0",
-        "commit": "fed449859aff1a8a18626c6c33436e6a88ca6560"
+        "tag": "v1.6.1",
+        "commit": "e9ea9f37bace01a89357c7f36feba0946b16b05d"
       },
       "fast-render": {
         "git": "https://github.com/arunoda/meteor-fast-render.git",
-        "tag": "v0.1.22",
-        "commit": "13c1d80bfd0366ad8d84f7a6ffa3cd9c21f9721e"
+        "tag": "v0.1.25",
+        "commit": "010c4ee25b48ab6a7373000be48f9cd4a8535880"
       },
       "collection2": {
         "git": "https://github.com/aldeed/meteor-collection2.git",
@@ -29,25 +30,35 @@
         "tag": "v1.1.0.1",
         "commit": "5c579c9833a6633a38fb05db928a09ac0a3bbc7e"
       },
-      "moment-with-langs": {
-        "git": "https://github.com/jeeeyul/meteor-moment-with-langs.git",
-        "tag": "v2.5.1",
-        "commit": "75f725898f6d5c3dddc54f1f619fe3b184f596a2"
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "tag": "v0.7.0",
+        "commit": "05f34bc48c4cad9fdaa366c1ddcabe6980232ece"
+      },
+      "pagemaster": {
+        "git": "https://github.com/sterlingwes/meteor-pagemaster",
+        "tag": "v0.5.7",
+        "commit": "5e0b18dba69e4818f6c72e7cb6542c8bb41b7f99"
       },
       "headers": {
         "git": "https://github.com/gadicohen/meteor-headers",
         "branch": "master",
-        "commit": "8dc6d6445def7151e2723b6f7e74818e1fe4b5b4"
+        "commit": "569a50eb334cc1ab324d0721411f48f1cc75ec24"
       },
       "simple-schema": {
         "git": "https://github.com/aldeed/meteor-simple-schema.git",
         "tag": "v0.2.45",
         "commit": "27a5a943a70a7376c90f18d2e2a4a122c6fc73fb"
       },
+      "blaze-layout": {
+        "git": "https://github.com/EventedMind/blaze-layout.git",
+        "tag": "v0.2.2",
+        "commit": "8bc53798fe5965669ae67c72f91829fcfdceabfd"
+      },
       "inject-initial": {
         "git": "https://github.com/gadicc/meteor-inject-initial.git",
-        "tag": "v0.0.3",
-        "commit": "7ebbbbdc3c4377bb9bbb1b683971451375d2233f"
+        "tag": "v0.0.7",
+        "commit": "921a944815e06ece8ce4ded180e9d2e9e31f6000"
       }
     }
   }
