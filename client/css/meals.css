@@ -142,3 +142,19 @@ ul.variants li.chosen button, ul.sides li.chosen button, ul.condiments li.chosen
 	text-shadow: rgba(0,0,0,.25) 0px 1px 0px;
 	padding: 0.25em 0.5em 0.25em 0.5em;
 }
+
+div.options{
+	float: left;
+	padding: 0.5rem;
+	color: #fff;
+	font-size: 1.2rem;
+}
+
+div.options input[type=checkbox] {  
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+div.options label{
+	margin-right: 2rem;
+}

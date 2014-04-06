@@ -11,6 +11,7 @@
   <section id="variants" class="hidden">{{> variants}}</section>
   <section id="sides" class="hidden">{{> sides}}</section>
   <section id="condiments" class="hidden">{{> condiments}}</section>
+  <section id="orderoptions" class="hidden">{{> orderoptions}}</section>
   <section id="tables" class="hidden">{{> tables}}</section>
 </section>
 <section id="sidebar">
@@ -64,7 +65,7 @@
   {{#each orders}}
     <tr class="order{{#if is_cancelled}} cancelled{{/if}}">
       <td>{{day_name}}&nbsp;{{date}}</td>
-      <td>{{meal_title}}{{#if side_id}}&nbsp;+&nbsp;{{side_title}}{{/if}}{{#if condiment_id}}&nbsp;+&nbsp;{{condiment_title}}{{/if}}</td>
+      <td>{{#if half}}&frac12;&nbsp;{{/if}}{{meal_title}}{{#if side_id}}&nbsp;+&nbsp;{{side_title}}{{/if}}{{#if condiment_id}}&nbsp;+&nbsp;{{condiment_title}}{{/if}}</td>
       <td class="price">{{price}} Kč</td>
       <td>{{room_title}}</td>
       <td>{{table_title}}</td>
@@ -140,6 +141,13 @@
    </ul>
 </template>
 
+<template name="orderoptions">
+  <h3 class="category" id="options-title">Možnosti</h3>
+  <div class="options">
+      <span id="half" class="hidden"><input id="frm_half" name="frn_half" type="checkbox"><label for="frm_half">Poloviční porce</label></span>
+  </div>
+</template>
+
 <template name="tables">
 <h3 class="category" id="tables-title">Stůl</h3>
 <ul class="rooms">
@@ -180,27 +188,27 @@
 <template name="orders">
 	<ul class="orders">
   	{{#each orders}}
-      <li data-order="{{_id}}" class="order{{#if is_new}} new{{/if}}{{#if is_cooking}} cooking{{/if}}{{#if is_cooked}} cooked{{/if}}{{#if is_cancelled}} cancelled{{/if}}{{#if is_issued}} issued{{/if}}">
+      <li data-order="{{_id}}" class="order{{#if is_new}} new{{/if}}{{#if is_cooking}} cooking{{/if}}{{#if is_cooked}} cooked{{/if}}{{#if is_cancelled}} cancelled{{/if}}{{#if is_issued}} issued{{/if}}{{#if not_mine}} not-mine{{/if}}">
 
-      <h3>{{meal_title}}{{#if side_id}}&nbsp;+&nbsp;{{side_title}}{{/if}}{{#if condiment_id}}&nbsp;+&nbsp;{{condiment_title}}{{/if}}</h3>
+        <h3>{{#if half}}&frac12;&nbsp;{{/if}}{{meal_title}}{{#if side_id}}&nbsp;+&nbsp;{{side_title}}{{/if}}{{#if condiment_id}}&nbsp;+&nbsp;{{condiment_title}}{{/if}}</h3>
 
-      <ul class="info">
-        <li class="time">{{time_created}}</li>
-        <li class="table">{{room_title}}&nbsp;{{table_title}}</li>
-      </ul>
+        <ul class="info">
+          <li class="time">{{time_created}}</li>
+          <li class="table">{{room_title}}&nbsp;{{table_title}}</li>
+        </ul>
 
 
 
-      <nav class="orderbuttons">
-          <!--{{#if is_new}}<button data-order="{{_id}}" class="side">+</button>{{/if}}
-          {{#if is_cooking}}
-            {{#unless side_id}}<button data-order="{{_id}}" class="side">+</button>{{/unless}}
-          {{/if}}-->
-          {{#if is_new}}<button data-order="{{_id}}" class="cancel">&times;</button>{{/if}}
-          <!-- {{#if is_cooked}}<button data-order="{{_id}}" class="issue">&#10003;</button>{{/if}} -->
-      </nav>
+        <nav class="orderbuttons">
+            <!--{{#if is_new}}<button data-order="{{_id}}" class="side">+</button>{{/if}}
+            {{#if is_cooking}}
+              {{#unless side_id}}<button data-order="{{_id}}" class="side">+</button>{{/unless}}
+            {{/if}}-->
+            {{#if is_new}}<button data-order="{{_id}}" class="cancel">&times;</button>{{/if}}
+            <!-- {{#if is_cooked}}<button data-order="{{_id}}" class="issue">&#10003;</button>{{/if}} -->
+        </nav>
 
-       <span class="price">{{price}},– Kč</span>
+         <span class="price">{{price}},– Kč</span>
 
       </li>
       	{{/each}}

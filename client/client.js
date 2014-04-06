@@ -1,12 +1,8 @@
 /*
 TODO
-kontrola kdo vytvoril objednavku:
-  zobrazeni v hospode
-  akce pri kliknuti jen u vlastnich
 mapa stolu:
   saloon s koncertem
   military
-polovicni porce
 */
 
 Template.chatworks.rendered = function() {
@@ -52,17 +48,26 @@ Template.tables.rooms = function () {
   return Rooms.find({}, { sort: { created: -1 }});
 }
 
-Template.orders.orders = function () {
-  return Orders.find({}, { sort: { created: -1 }});
-}
+Template.orders.helpers({
+  orders: function () {
+    return Orders.find({}, { sort: { created: -1 }});
+  },
 
-Template.orders.meals = function (order) {
-  return Meals.find({_id:parent.meal_id}).fetch();
-}
+  meals: function (order) {
+    return Meals.find({_id:parent.meal_id}).fetch();
+  },
 
-Template.orders.for_me = function (order) {
-  return true;
-}
+  not_mine: function (order) {
+    // console.log(this.author_id);
+    // console.log(Meteor.userId());
+    if(this.author_id != Meteor.userId()){
+      return true;
+    } else {
+      return false;
+    }
+    // return true;
+  }
+})
 
 Template.report.orders = function () {
   return Orders.find({}, { sort: { created: -1 }});
@@ -82,6 +87,11 @@ Template.meals.events({
           document.getElementById("variants").classList.remove("hidden");
           document.getElementById("sides").classList.remove("hidden");
           document.getElementById("condiments").classList.remove("hidden");
+          console.log("typeof: " + typeof Meals.findOne({_id: meal}).half_price);
+          if(Meals.findOne({_id: meal}).can_half){
+            document.getElementById("orderoptions").classList.remove("hidden");
+            document.getElementById("half").classList.remove("hidden");
+          }
           document.getElementById("tables").classList.remove("hidden");
           return false;
         } else {
@@ -90,6 +100,11 @@ Template.meals.events({
           document.getElementById("sides-title").style.marginTop=0;
           document.getElementById("sides").classList.remove("hidden");
           document.getElementById("condiments").classList.remove("hidden");
+          console.log("typeof: " + typeof Meals.findOne({_id: meal}).half_price);
+          if(Meals.findOne({_id: meal}).can_half){
+            document.getElementById("orderoptions").classList.remove("hidden");
+            document.getElementById("half").classList.remove("hidden");
+          }
           document.getElementById("tables").classList.remove("hidden");
           console.log("frm_meal = " + document.getElementsByName("frm_meal").value);
           return false;
@@ -148,13 +163,20 @@ Template.tables.events({
           document.getElementsByName("frm_meal").value = document.getElementsByClassName("chosen")[0].dataset.meal;
         }
         var priceform = document.getElementsByName("frm_price");
-        priceform.value = Meals.findOne({_id: document.getElementsByName("frm_meal").value}).price;
+        if(!document.getElementById("frm_half").checked){
+          priceform.value = Meals.findOne({_id: document.getElementsByName("frm_meal").value}).price;
+        } else {
+          priceform.value = Meals.findOne({_id: document.getElementsByName("frm_meal").value}).half_price;
+        }
         if(document.getElementsByName("frm_side").value){
           priceform.value += Meals.findOne({_id: document.getElementsByName("frm_side").value}).price;
         }
         if(document.getElementsByName("frm_condiment").value){
           priceform.value += Meals.findOne({_id: document.getElementsByName("frm_condiment").value}).price;
         }
+
+        // console.log("half: " + document.getElementById("frm_half").checked);
+
         Orders.insert({
           author_id: Meteor.userId(),
           meal_id: document.getElementsByName("frm_meal").value,
@@ -168,6 +190,7 @@ Template.tables.events({
           is_cooked: false,
           is_cooking: false,
           is_issued: false,
+          half: document.getElementById("frm_half").checked,
         });
 
         //RESET//////////////////////////////////////////////////////////////////////////////////
@@ -181,6 +204,9 @@ Template.tables.events({
           document.getElementById("variants").classList.add("hidden");
           document.getElementById("condiments").classList.add("hidden");
           document.getElementById("tables").classList.add("hidden");
+          document.getElementById("orderoptions").classList.add("hidden");
+          document.getElementById("half").classList.add("hidden");
+          document.getElementById("frm_half").checked = false;
           var buttons = document.getElementsByClassName("condiment");
           for(var i = 0 ; i < buttons.length; i++){
             buttons[i].classList.remove("chosen");
@@ -196,8 +222,21 @@ Template.tables.events({
 
 Template.orders.events({
     'click button.cancel' : function(event){
-      Orders.update({_id: event.currentTarget.dataset.order}, {$set: {is_cancelled: true}});
+      var order_id = event.currentTarget.parentNode.parentNode.dataset.order;
+      // console.log("clicked cancel");
+      // console.log("order_id = " + order_id);
+      console.log("classList = " + event.currentTarget.parentNode.parentNode.parentNode.parentNode.classList);
+      if(event.currentTarget.parentNode.parentNode.parentNode.parentNode.classList.contains("hospoda")){
+        // console.log("author_id = " + Orders.findOne({_id: order_id}).author_id);
+        // console.log("userId = " + Meteor.userId());
+        if(Orders.findOne({_id: order_id}).author_id == Meteor.userId()){
+          Orders.update({_id: event.currentTarget.dataset.order}, {$set: {is_cancelled: true}});
+        }
+      } else if(event.currentTarget.parentNode.parentNode.parentNode.parentNode.classList.contains("kuchyne")){
+        Orders.update({_id: event.currentTarget.dataset.order}, {$set: {is_cancelled: true}});
+      }
     },
+
     'click li.order' : function(event){
       var order_id = event.currentTarget.dataset.order;
       if(event.currentTarget.parentNode.parentNode.classList.contains("kuchyne")){
@@ -206,7 +245,7 @@ Template.orders.events({
         } else if(Orders.findOne({_id: order_id}).is_cooking == true && Orders.findOne({_id: order_id}).is_cancelled == false){
           Orders.update({_id: order_id}, {$set: {is_cooking: false, is_cooked: true, cooked: new Date()}});
         }
-      } else {
+      } else if(Orders.findOne({_id: order_id}).author_id == Meteor.userId()){
          if(Orders.findOne({_id: order_id}).is_cooked == true && Orders.findOne({_id: order_id}).is_cancelled == false){
           Orders.update({_id: order_id}, {$set: {is_cooked: false, is_issued: true, issued: new Date()}});
         }

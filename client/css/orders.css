@@ -7,9 +7,9 @@ section#orders{
 	overflow-y: scroll;
 }
 
-/* section#orders.openedchat{
-	height: 50%;
-} */
+/*section#orders.openedchat{
+	height: 75%;
+}*/
 
 section#orders ul.orders{
 	list-style: none;
@@ -47,6 +47,16 @@ section#orders ul.orders li h3{
 }
 
 
+/*section#orders ul.orders li h3 span.half{
+	font-size: 1.5em;
+	line-height: 2rem;
+}
+
+section#orders ul.orders li h3:first-letter{
+	font-size: 1.5em;
+	line-height: 2rem;
+}
+*/
 section#orders ul.orders li ul.info{
 	float:left;
 	list-style: none;
@@ -111,10 +121,6 @@ section#orders ul.orders li:hover{
 	border-bottom: 1px solid #444;
 }
 
-section#orders ul.orders li:hover h3{
-	/*color:#555;*/
-	/*-webkit-mask-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 65%, rgba(0, 0, 0, 0) 80%);*/
-}
 
 section#orders ul.orders li:hover ul.info{
 	color:#555;
@@ -202,6 +208,18 @@ section#orders ul.orders li.issued h3:hover{
 	cursor: default;
 }
 
+/* not mine */
+
+section#orders.hospoda ul.orders li.not-mine h3{
+	background: none;
+	-webkit-mask-image: none;
+	cursor: default;
+}
+
+section#orders.hospoda ul.orders li.not-mine:hover button{
+	display: none;
+}
+
 
 /* cancelled */
 
@@ -211,7 +229,7 @@ section#orders ul.orders li.cancelled *{
 
 section#orders ul.orders li.cancelled h3{
 	text-decoration: line-through;
-		background-color: #333;
+	background: none;
 	-webkit-mask-image: none;
 	}
 
@@ -234,6 +252,7 @@ section#orders ul.orders li.cancelled:hover h3{
 
 }
 
+/*****************************************/
 
 span.price{
 	list-style: none;
@@ -307,3 +326,4 @@ section#orders.kuchyne ul.orders li.cooking:hover h3{
 	color: #fff;
 	background-color: #a63600;
 }
+

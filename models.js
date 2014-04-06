@@ -72,13 +72,14 @@ Meals = new Meteor.Collection("meals", {
             type: Boolean,
             label: "Omáčka",
         },
-        can_half: {
-            type: Boolean,
-            label: "Může být poloviční",
-        },
         price: {
             type: Number,
             label: "Cena",
+            optional: true
+        },
+        half_price: {
+            type: Number,
+            label: "Cena poloviční porce",
             optional: true
         },
         position: {
@@ -149,6 +150,10 @@ Orders = new Meteor.Collection("orders", {
         price: {
             type: Number,
             label: "Cena"
+        },
+        half: {
+            type: Boolean,
+            label: "Poloviční"
         },
         is_new: {
             type: Boolean,
