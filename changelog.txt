@@ -1,0 +1,11 @@
+16.4. ráno
+- přidán součet tržby na barech
+- v kuchyni nové tlačítko na ukončení/začátek směny
+
+16.4. večer
+- tržby na barech ukazují jen vlastní objednávky
+- přidán součet celé tržby v kuchyni
+
+17.4. ráno
+- objednávka jde kopírovat dvojklikem
+- na barech se zobrazují jen vlastní objednávky, možnost přepnutí bude

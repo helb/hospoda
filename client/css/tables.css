@@ -27,7 +27,12 @@ section#tables svg{
 	/*border: 1px solid red;*/
 	min-height: 500px;
 	height: 100%;
-	margin: 1rem;
+	margin: 2rem 1rem 1rem 1rem;
+}
+
+section#tables svg text{
+	fill: #fff;
+	font-size: 1.5em;
 }
 
 section#tables svg .table{
@@ -35,7 +40,29 @@ section#tables svg .table{
 	stroke: #000;
 }
 
+
+section#tables svg.military .table{
+	fill: rgba(120,120,120,0.5);
+	stroke: #000;
+}
+
+section#tables svg .table.special{
+	fill: rgba(120,120,120,0.2);
+}
+
+section#tables svg .table.special:hover, section#tables svg.military .table:hover{
+	fill-opacity:0.4;
+}
+
 section#tables svg .table:hover{
 	fill: #3aa6d0;
 	cursor: pointer;
+}
+
+section#tables li.room.chosen{
+	color:#fff;
+	border-right:1px solid #3aa6d0;
+	background: #3aa6d0;
+	-webkit-box-shadow: 0px 2px 0px #124b61;
+	border-bottom: 1px solid #6cb0ca;
 }

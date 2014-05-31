@@ -39,3 +39,9 @@ section#sidebar{
 .hidden{
 	display: none;
 }
+
+html *{
+	cursor: default;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+}

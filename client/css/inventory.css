@@ -1,8 +1,11 @@
 section#inventory{
-	background: #333;
-	color:#333;
-	height:94%;
-	font-size: 1rem;
-	line-height: 1.2rem;
+	background: #666;
+	color:#ddd;
+	height:85%;
+	font-size: 6rem;
+	/*line-height: 1.2rem;*/
 	overflow-y: scroll;
+	text-align: center;
+	padding-top: 2rem;
+	letter-spacing: -0.05em;
 }

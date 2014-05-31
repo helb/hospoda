@@ -1,4 +1,19 @@
-Tables = new Meteor.Collection("tables", {
+Rooms = new Meteor.Collection2("rooms", {
+    schema: new SimpleSchema({
+        title: {
+            type: String,
+            label: "Název",
+            max: 100
+        },
+        user_id: {
+            type: String,
+            label: "Uživatel"
+        }
+    })
+});
+
+
+Tables = new Meteor.Collection2("tables", {
     schema: new SimpleSchema({
         title: {
             type: String,
@@ -7,7 +22,7 @@ Tables = new Meteor.Collection("tables", {
         },
         room_id: {
             type: String,
-            label: "Místnost",
+            label: "Místnost"
         },
         price: {
             type: Number,
@@ -16,17 +31,8 @@ Tables = new Meteor.Collection("tables", {
     })
 });
 
-Rooms = new Meteor.Collection("rooms", {
-    schema: new SimpleSchema({
-        title: {
-            type: String,
-            label: "Název",
-            max: 100
-        }
-    })
-});
 
-Categories = new Meteor.Collection("categories", {
+Categories = new Meteor.Collection2("categories", {
     schema: new SimpleSchema({
         title: {
             type: String,
@@ -44,7 +50,8 @@ Categories = new Meteor.Collection("categories", {
     })
 });
 
-Meals = new Meteor.Collection("meals", {
+
+Meals = new Meteor.Collection2("meals", {
     schema: new SimpleSchema({
         title: {
             type: String,
@@ -53,12 +60,15 @@ Meals = new Meteor.Collection("meals", {
         },
         active: {
             type: Boolean,
-            label: "Aktivní",
-            autoValue: function(){return true;}
+            label: "Aktivní"
         },
         has_sides: {
             type: Boolean,
             label: "Podává se s přílohou"
+        },
+        has_condiments: {
+            type: Boolean,
+            label: "Podává se s omáčkou"
         },
         category_id: {
             type: String,
@@ -66,11 +76,16 @@ Meals = new Meteor.Collection("meals", {
         },
         is_side: {
             type: Boolean,
-            label: "Příloha",
+            label: "Příloha"
         },
         is_condiment: {
             type: Boolean,
-            label: "Omáčka",
+            label: "Omáčka"
+        },
+        condiment_included: {
+            type: Boolean,
+            label: "Omáčka v ceně",
+            optional: true
         },
         price: {
             type: Number,
@@ -104,7 +119,8 @@ virtualFields: {
     }
 });
 
-Orders = new Meteor.Collection("orders", {
+
+Orders = new Meteor.Collection2("orders", {
     schema: new SimpleSchema({
         author_id: {
             type: String,
@@ -121,6 +137,11 @@ Orders = new Meteor.Collection("orders", {
         side_id: {
             type: String,
             label: "Příloha",
+            optional: true
+        },
+        side_quantity: {
+            type: Number,
+            label: "Počet příloh",
             optional: true
         },
         condiment_id: {
@@ -174,7 +195,17 @@ Orders = new Meteor.Collection("orders", {
         is_issued: {
             type: Boolean,
             label: "Vydaná"
-        }
+        },
+        is_archived: {
+            type: Boolean,
+            label: "Archivovaná",
+            optional: true
+        },
+        archived_on: {
+            type: Date,
+            label: "Čas archivace",
+            optional: true
+        },
     }),
      virtualFields: {
         room_title: function(order) {

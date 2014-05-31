@@ -5,6 +5,7 @@
     "collection2": {},
     "buzz.js": {},
     "iron-router": {},
-    "pagemaster": {}
+    "pagemaster": {},
+    "filter-collections": {}
   }
 }

@@ -1,7 +1,7 @@
 section#orders{
 	background: #333;
 	color:#fff;
-	height:94%;
+	height:90%;
 	font-size: 1rem;
 	line-height: 1.2rem;
 	overflow-y: scroll;
@@ -77,8 +77,9 @@ section#orders ul.orders li ul.info{
 }
 
 section#orders ul.orders li ul.info li.table{
-	color: #888;
+	color: #aaa;
 	text-transform: uppercase;
+	font-size: 0.85em;
 }
 
 
@@ -128,6 +129,7 @@ section#orders ul.orders li:hover ul.info{
 
 section#orders ul.orders li:hover ul.info li.table{
 	color:#444;
+	white-space: nowrap;
 }
 
 section#orders ul.orders li:hover nav.orderbuttons{
@@ -140,19 +142,6 @@ section#orders ul.orders li button:hover{
 	-webkit-box-shadow: 0px 2px 0px #9a1b1b;
 	border-bottom: 1px solid #f67f7f;
 }
-
-section#orders ul.orders li button.side:hover{
-	background: #3aa6d0;
-	-webkit-box-shadow: 0px 2px 0px #134b61;
-	border-bottom: 1px solid #6cb0ca;
-}
-
-section#orders ul.orders li button.issue:hover{
-	background: #98ed00;
-	-webkit-box-shadow: 0px 2px 0px #639a00;
-	border-bottom: 1px solid #c6f66f;
-}
-
 
 
 /* cooking */
@@ -170,12 +159,29 @@ section#orders ul.orders li.cooked h3{
 	cursor: pointer;
 }
 
+section#orders.hospoda ul.orders li.cooked h3{
+	-webkit-animation:cooked 0.5s;
+	-webkit-animation-iteration-count: infinite;
+	background:#689f14;
+}
+
+@-webkit-keyframes cooked{
+/*	0%   {background:#689f14;}
+	50%  {background:#333;}
+	100% {background:#689f14;}*/
+	0%   {opacity:1;}
+	50%  {opacity:0;}
+	100% {opacity:1;}
+}
+
+
 section#orders.kuchyne ul.orders li.cooked h3{
 	cursor: default;
 }
 
 section#orders ul.orders li.cooked:hover h3{
 	color:#fff;
+	-webkit-animation: none;
 }
 
 
@@ -186,21 +192,39 @@ section#orders ul.orders li.new h3{
 	background: #de0052;
 }
 
+
+section#orders.kuchyne ul.orders li.new h3{
+	-webkit-animation:new 1s;
+	-webkit-animation-iteration-count: infinite;
+	background:#cd0052;
+}
+
+@-webkit-keyframes new{
+/*	0%   {background:#cd0052;}
+	50%  {background:#333;}
+	100% {background:#de0052;}*/
+	0%   {opacity:1;}
+	50%  {opacity:0;}
+	100% {opacity:1;}
+}
+
 section#orders ul.orders li.new:hover h3{
 	color: #fff;
 	background-color: #900035;
+	-webkit-animation: none;
 }
 
 /* issued */
 
 section#orders ul.orders li.issued h3{
 	/*border-left: 0.5em solid #689f14;*/
-
+	-webkit-mask-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 65%, rgba(0, 0, 0, 0) 100%);
 }
 
 section#orders ul.orders li.issued h3:before{
 	/*content: "✔";*/
 	content: "✓";
+	color: #aaa;
 	margin-right: 0.5rem;
 }
 
@@ -210,10 +234,15 @@ section#orders ul.orders li.issued h3:hover{
 
 /* not mine */
 
+section#orders.hospoda ul.orders li.not-mine{
+	display: none;
+}
+
 section#orders.hospoda ul.orders li.not-mine h3{
 	background: none;
-	-webkit-mask-image: none;
+	-webkit-mask-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 65%, rgba(0, 0, 0, 0) 100%);
 	cursor: default;
+	-webkit-animation: none;
 }
 
 section#orders.hospoda ul.orders li.not-mine:hover button{
@@ -225,12 +254,14 @@ section#orders.hospoda ul.orders li.not-mine:hover button{
 
 section#orders ul.orders li.cancelled *{
 	opacity: 0.15;
+	-webkit-animation: none;
 }
 
 section#orders ul.orders li.cancelled h3{
 	text-decoration: line-through;
 	background: none;
 	-webkit-mask-image: none;
+	-webkit-animation: none;
 	}
 
 section#orders ul.orders li.cancelled:hover{
@@ -276,8 +307,16 @@ li:hover span.price{
 }
 
 section#orders.kuchyne{
-height: 100%;
+	height: 100%;
 }
+
+/* section#orders.kuchyne h3{
+	background: #a61300;
+	border-bottom: 1px solid #ff1e00;
+	border-right: 1px solid #6c0d00;
+	-webkit-box-shadow: 0px 2px 0px #6c0d00;
+} */
+
 section#orders.kuchyne ul.orders{
 	margin-top: 1.6rem;
 }
@@ -301,6 +340,7 @@ section#orders.kuchyne ul.orders li.cancelled h3{
 	cursor: default;
 	background-color: #333;
 	-webkit-mask-image: none;
+	-webkit-animation: none;
 }
 
 section#orders.kuchyne ul.orders li span.price{
@@ -327,3 +367,8 @@ section#orders.kuchyne ul.orders li.cooking:hover h3{
 	background-color: #a63600;
 }
 
+span.time-issued{
+	color: #aaa;
+	padding-right: 1em;
+	font-size: 0.75em;
+}

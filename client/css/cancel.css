@@ -1,0 +1,40 @@
+section#cancel{
+	position: fixed;
+	bottom:0;
+	left:0;
+}
+
+section#cancel button{
+	border: 0;
+	float: left;
+	font-family: 'open_sanscondensed_light';
+	text-transform: uppercase;
+	outline: none;
+	background: #333;
+	-webkit-box-shadow: 0px 2px 0px #222;
+	border-bottom: 1px solid #444;
+	color: #fff;
+	margin: 0 0 0.5rem 0.5rem;
+	line-height: 1.5rem;
+	font-size: 1em;
+}
+
+section#cancel button:first-letter{
+	font-size: 1.5em;
+	line-height: 1.5rem;
+}
+
+section#cancel button:hover{
+	background: #397b95;
+	-webkit-box-shadow: 0px 3px 0px #124b61;
+	border-bottom: 1px solid #6cb0ca;
+	cursor: pointer;
+}
+
+section#cancel span{
+	float: right;
+	color: #fff;
+	margin: 0.25rem 0 0.5rem 0.5rem;
+	line-height: 1.5rem;
+	font-size: 1.5em;
+}
