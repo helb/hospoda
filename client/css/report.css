@@ -4,12 +4,46 @@ section#report{
 	color: #000;
 	/*padding: 2rem;*/
 	font-size: 1.2rem;
+	text-align: center;
 }
+
+section#report header{
+	float: left;
+	/*border: 1px solid red;*/
+	text-align: left;
+	width: 23rem;
+}
+
+section#report input{
+	text-align: center;
+	font-size: 1.5em;
+	margin-bottom: 0.75rem;
+}
+
+section#report input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
+section#report input[type=date]::-webkit-clear-button
+{
+    display: none; /* Hide the button */
+    -webkit-appearance: none; /* turn off default browser styling */
+}
+
+
+section#report span#stats{
+	color: #fff;
+	display: block;
+	list-style: none;
+	margin-bottom: 1rem;
+}
+
 
 section#report table{
 	/*border:1px solid #333;*/
 	width: 100%;
-	background: #fff;
+	text-align: left;
 }
 
 section#report table td, th{
@@ -26,23 +60,24 @@ section#report table th{
 	border-left: 1px solid #444;
 }
 
-section#report table td{
+section#report table tr.order td:not(.currency){
 	border-left: 1px solid #ddd;
 }
 
-section#report table tr{
+section#report table tr.order{
 	border-bottom: 1px solid #999;
+	background: #fff;
 }
 
-section#report table tr td:nth-child(2), section#report table thead th:nth-child(2){
+section#report table tr.order td:nth-child(2), section#report table thead th:nth-child(2){
 	font-weight: bold;
 }
 
-section#report table tr td:nth-child(1), section#report table thead th:nth-child(1){
+section#report table tr.order td:nth-child(1), section#report table thead th:nth-child(1){
 	border: 0;
 }
 
-section#report table tr.cancelled{
+section#report table tr.order.cancelled{
 	color:#bbb;
 	text-decoration: line-through;
 }
@@ -50,4 +85,73 @@ section#report table tr.cancelled{
 
 section#report table td.price, section#report table td.time{
 	text-align: right;
+}
+
+section#report table tr.sum{
+	color: #fff;
+}
+
+section#report table td.price{
+	padding-right: 0.25rem;
+	color: #999;
+}
+
+section#report table td.currency{
+	padding: 0;
+}
+
+section#report table td.issued{
+	color: #000;
+}
+
+section#report section#setpromo{
+	color: #fff;
+	/*border: 1px solid red;*/
+	text-align: right;
+	float: right;
+}
+
+section#report section#setpromo label{
+	margin: 0 0.5rem 0 0.5rem;
+}
+
+section#report section#setpromo label[for=frm_promoprice]{
+	margin-left: 2rem;
+}
+
+section#report section#setpromo input{
+	font-size: 1rem;
+	text-align: left;
+	margin-top: 0.5rem;
+}
+
+section#report section#setpromo button{
+	border: 0;
+	font-family: 'open_sanscondensed_light';
+	text-transform: uppercase;
+	outline: none;
+	background: #333;
+	-webkit-box-shadow: 0px 2px 0px #222;
+	border-bottom: 1px solid #444;
+	color: #fff;
+	margin: -1rem 0 0 0.5rem;
+	line-height: 1.5rem;
+	font-size: 1em;
+}
+
+section#report section#setpromo button:hover{
+	background: #397b95;
+	-webkit-box-shadow: 0px 3px 0px #124b61;
+	border-bottom: 1px solid #6cb0ca;
+	cursor: pointer;
+}
+
+section#report section#setpromo input[type=checkbox]{
+	width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+section#report section#setpromo input[type=number]{
+	width: 5rem;
 }
