@@ -1,4 +1,4 @@
-Rooms = new Meteor.Collection2("rooms", {
+Rooms = new Meteor.Collection("rooms", {
     schema: new SimpleSchema({
         title: {
             type: String,
@@ -13,7 +13,7 @@ Rooms = new Meteor.Collection2("rooms", {
 });
 
 
-Tables = new Meteor.Collection2("tables", {
+Tables = new Meteor.Collection("tables", {
     schema: new SimpleSchema({
         title: {
             type: String,
@@ -32,7 +32,7 @@ Tables = new Meteor.Collection2("tables", {
 });
 
 
-Categories = new Meteor.Collection2("categories", {
+Categories = new Meteor.Collection("categories", {
     schema: new SimpleSchema({
         title: {
             type: String,
@@ -51,7 +51,7 @@ Categories = new Meteor.Collection2("categories", {
 });
 
 
-Meals = new Meteor.Collection2("meals", {
+Meals = new Meteor.Collection("meals", {
     schema: new SimpleSchema({
         title: {
             type: String,
@@ -107,20 +107,22 @@ Meals = new Meteor.Collection2("meals", {
             label: "Varianta jídla",
             optional: true
         },
-    }),
-virtualFields: {
-        default_variant: function(meal) {
-            if(meal.position ==0){
+    })
+
+});
+
+Meals.helpers({
+        default_variant: function() {
+            if(this.position ==0){
                 return true;
             } else {
                 return false;
             }
-        },
-    }
+        }
 });
 
 
-Orders = new Meteor.Collection2("orders", {
+Orders = new Meteor.Collection("orders", {
     schema: new SimpleSchema({
         author_id: {
             type: String,
@@ -206,91 +208,93 @@ Orders = new Meteor.Collection2("orders", {
             label: "Čas archivace",
             optional: true
         },
-    }),
-     virtualFields: {
-        room_title: function(order) {
-            if(order.table_id){
-                return Rooms.findOne({_id: Tables.findOne({_id: order.table_id}).room_id}).title.split(' ')[0];
+    })
+});
+
+Orders.helpers({
+        room_title: function() {
+            if(this.table_id){
+                return Rooms.findOne({_id: Tables.findOne({_id: this.table_id}).room_id}).title.split(' ')[0];
             } else {
                 return null;
             }
         },
-        meal_title: function(order) {
-            if(order.meal_id){
-                return Meals.findOne({_id: order.meal_id}).title;
+        meal_title: function() {
+            if(this.meal_id){
+                return Meals.findOne({_id: this.meal_id}).title;
             } else {
                 return null;
             }
         },
-        side_title: function(order) {
-            if(order.side_id){
-                return Meals.findOne({_id: order.side_id}).title;
+        side_title: function() {
+            if(this.side_id){
+                return Meals.findOne({_id: this.side_id}).title;
             } else {
                 return null;
             }
         },
-        condiment_title: function(order) {
-            if(order.condiment_id){
-                return Meals.findOne({_id: order.condiment_id}).title;
+        condiment_title: function() {
+            if(this.condiment_id){
+                return Meals.findOne({_id: this.condiment_id}).title;
             } else {
                 return null;
             }
         },
-        table_title: function(order) {
-            if(order.table_id){
-                return Tables.findOne({_id: order.table_id}).title;
+        table_title: function() {
+            if(this.table_id){
+                return Tables.findOne({_id: this.table_id}).title;
             } else {
                 return null;
             }
         },
-        time_created: function(order) {
-            if(order.created){
-                return order.created.getHours()+":"+(order.created.getMinutes()<10?'0':'') + order.created.getMinutes();
+        time_created: function() {
+            if(this.created){
+                return this.created.getHours()+":"+(this.created.getMinutes()<10?'0':'') + this.created.getMinutes();
             } else {
                 return null;
             }
         },
-        time_accepted: function(order) {
-            if(order.accepted){
-                return order.accepted.getHours()+":"+(order.accepted.getMinutes()<10?'0':'') + order.accepted.getMinutes();
+        time_accepted: function() {
+            if(this.accepted){
+                return this.accepted.getHours()+":"+(this.accepted.getMinutes()<10?'0':'') + this.accepted.getMinutes();
             } else {
                 return null;
             }
         },
-        time_cooked: function(order) {
-            if(order.cooked){
-                return order.cooked.getHours()+":"+(order.cooked.getMinutes()<10?'0':'') + order.cooked.getMinutes();
+        time_cooked: function() {
+            if(this.cooked){
+                return this.cooked.getHours()+":"+(this.cooked.getMinutes()<10?'0':'') + this.cooked.getMinutes();
             } else {
                 return null;
             }
         },
-        time_issued: function(order) {
-            if(order.issued){
-                return order.issued.getHours()+":"+(order.issued.getMinutes()<10?'0':'') + order.issued.getMinutes();
+        time_issued: function() {
+            if(this.issued){
+                return this.issued.getHours()+":"+(this.issued.getMinutes()<10?'0':'') + this.issued.getMinutes();
             } else {
                 return null;
             }
         },
-        time_total: function(order) {
-            if(order.issued){
-                time_total = (order.issued - order.created)/60000;
+        time_total: function() {
+            if(this.issued){
+                time_total = (this.issued - this.created)/60000;
                 return time_total.toFixed(0);
             } else {
                 return null;
             }
         },
-        date: function(order) {
-            if(order.created){
-                day = order.created.getDate();
-                month = order.created.getMonth()+1;
+        date: function() {
+            if(this.created){
+                day = this.created.getDate();
+                month = this.created.getMonth()+1;
                 return day + ". " + month + ".";
             } else {
                 return null;
             }
         },
-        day_name: function(order) {
-            if(order.created){
-                // day = order.created.getDate();
+        day_name: function() {
+            if(this.created){
+                // day = this.created.getDate();
                 var weekday=new Array(7);
                 weekday[0]="Ne";
                 weekday[1]="Po";
@@ -299,11 +303,10 @@ Orders = new Meteor.Collection2("orders", {
                 weekday[4]="Čt";
                 weekday[5]="Pá";
                 weekday[6]="So";
-                return weekday[order.created.getDay()];
+                return weekday[this.created.getDay()];
                 // return day + ". " + month + ".";
             } else {
                 return null;
             }
         }
-    }
 });
