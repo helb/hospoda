@@ -4,7 +4,6 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-autopublish
 insecure
 accounts-ui
 accounts-password
@@ -15,3 +14,7 @@ buzz.js
 accounts-base
 iron-router
 pagemaster
+filter-collections
+autopublish
+kadira
+collection-helpers

@@ -6,6 +6,8 @@
     "buzz.js": {},
     "iron-router": {},
     "pagemaster": {},
-    "filter-collections": {}
+    "filter-collections": {},
+    "kadira": {},
+    "collection-helpers": {}
   }
 }

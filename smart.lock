@@ -8,7 +8,9 @@
       "buzz.js": {},
       "iron-router": {},
       "pagemaster": {},
-      "filter-collections": {}
+      "filter-collections": {},
+      "kadira": {},
+      "collection-helpers": {}
     },
     "packages": {
       "chatworks": {
@@ -23,8 +25,8 @@
       },
       "collection2": {
         "git": "https://github.com/aldeed/meteor-collection2.git",
-        "tag": "v0.3.11",
-        "commit": "7e970671305657678e8508d8107d5e6c5e158559"
+        "tag": "v0.4.0",
+        "commit": "5648f7c53ee98f3ac8fbe82a55e6fd78fc67cfbc"
       },
       "buzz.js": {
         "git": "https://github.com/brentjanderson/meteor-buzz.git",
@@ -45,6 +47,16 @@
         "git": "https://github.com/julianmontagna/filter-collections.git",
         "tag": "v0.1.4",
         "commit": "87bc9cee7a23459e427d4613383be3f67f29245c"
+      },
+      "kadira": {
+        "git": "https://github.com/meteorhacks/kadira.git",
+        "tag": "v2.1.4",
+        "commit": "c564bcd390af097af890a18ee4d4df7bdbc659dc"
+      },
+      "collection-helpers": {
+        "git": "https://github.com/dburles/meteor-collection-helpers.git",
+        "tag": "v0.2.9",
+        "commit": "912be6d15a59b9ee4519bf73000be70dd141b655"
       },
       "simple-schema": {
         "git": "https://github.com/aldeed/meteor-simple-schema.git",
