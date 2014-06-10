@@ -27,6 +27,8 @@ section#tables svg{
 	/*border: 1px solid red;*/
 	min-height: 500px;
 	height: 100%;
+	width: 100%;
+	min-width: 600px;
 	margin: 2rem 1rem 1rem 1rem;
 }
 

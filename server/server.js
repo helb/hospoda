@@ -2,44 +2,68 @@ Meteor.startup(function() {
   return Meteor.methods({
     cleanOrders: function() {
       return Orders.remove({});
-    }
+    },
+    cleanChat: function() {
+      return Messages.remove({});
+    },
   });
 });
 
-/*Meteor.publish("orders", function () {
-    if (this.userId == "nXMPYc32A5rGrrBov"){	// miki
-    	return Orders.find();				 	// vsechny objednavky
-    } else if (this.userId == "pajKWX58s4ooEojgT"){ 		// kuchyne
-		return Orders.find({is_archived: { $ne: true}});	// jen nearchivovane
-    } else {																			// hospody
-    	return Orders.find({author_id: this.userId, is_archived: { $ne: true}});		// jen vlastni nearchivovane
-    }
+
+
+/* Orders */
+
+Meteor.publish("reportOrders", function () {
+    return Orders.find(); //omezit na datum + omezit pole
 });
 
-Meteor.publish("meals", function () {
-    if (this.userId == "nXMPYc32A5rGrrBov"){ 	// miki
-    	return Meals.find();					// vsechna jidla
-	} else {
-    	return Meals.find({active: true});		// jen aktivni
-    }
+Meteor.publish("kitchenOrders", function () {
+    return Orders.find({is_archived: { $ne: true}}); //omezit pole
 });
 
-Meteor.publish("categories", function () {
-    if (this.userId == "nXMPYc32A5rGrrBov"){ 	// miki
-    	return Categories.find();				// vsechny kategorie
-	} else {
-    	return Categories.find({display: true});	// jen aktivni
-    }
+Meteor.publish("pubOrders", function () {
+    return Orders.find({author_id: this.userId, is_archived: { $ne: true}}); //omezit pole
 });
 
-Meteor.publish("rooms", function () {
-    if (this.userId == "nXMPYc32A5rGrrBov" || this.userId == "pajKWX58s4ooEojgT"){ 	// miki nebo kuchyne
-    	return Orders.find();				 										// vsechny mistnosti
-	} else {											// hospody
-    	return Orders.find({user_id: this.userId});		// jen vlastni
-    }
-});
 
-Meteor.publish("tables", function () {
-    return Tables.find();
+
+/* Meals & Categories */
+
+/*Meteor.publish("activeMeals", function () {
+    return Meals.find({active: true}); //omezit pole
 });*/
+
+Meteor.publish("allMeals", function () {
+    return Meals.find(); //omezit pole
+});
+
+/*Meteor.publish("activeCategories", function () {
+    return Categories.find({display: true}); //omezit pole
+});*/
+
+Meteor.publish("allCategories", function () {
+    return Categories.find(); //omezit pole
+});
+
+
+
+/* Tables & Rooms */
+
+Meteor.publish("allRooms", function () {
+    return Rooms.find(); //omezit pole
+});
+
+/*Meteor.publish("pubRooms", function () {
+    return Orders.find({user_id: this.userId}); //omezit pole
+});
+*/
+Meteor.publish("allTables", function () {
+    return Tables.find(); //omezit pole
+});
+
+
+/* Chat */
+
+Meteor.publish("chatMessages", function () {
+    return Messages.find();
+});

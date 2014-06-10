@@ -1,9 +1,5 @@
 /*
 TODO
-mapa stolu:
-  omezeni moznych map podle uzivatele
-  nazvy na stolech
-
 jidla:
   moznost objednat samostatnou prilohu/omacku vickrat
   moznost pridat vic omacek
@@ -11,11 +7,6 @@ jidla:
 admin
 */
 
-/*Meteor.subscribe("categories");
-Meteor.subscribe("meals");
-Meteor.subscribe("rooms");
-Meteor.subscribe("tables");
-Meteor.subscribe("orders");*/
 
 Date.prototype.addDays = function(days) {
     this.setDate(this.getDate() + days);
@@ -30,14 +21,6 @@ Date.prototype.toDateInputValue = (function() {
 
 var variants_dep = new Deps.Dependency();
 // var orders_dep = new Deps.Dependency();
-
-// replace text in chat input:
-Template.chatworks.rendered = function() {
-  if(!this._rendered) {
-    this._rendered = true;
-    document.getElementById("message").placeholder="Napiš zprávu a odešli Enterem";
-  }
-}
 
 Template.report.rendered = function() {
   document.getElementById('frm_daydisplay').value = new Date().toDateInputValue();
@@ -101,7 +84,7 @@ Template.condiments.condiments = function() {
 
 Template.tables.rooms = function () {
   // var id = Meteor.userId();
-  return Rooms.find({/*user_id: id*/}, { sort: { created: -1 }});
+  return Rooms.find({}, { sort: { position: 1 }});
 }
 
 Template.orders.helpers({
@@ -199,13 +182,14 @@ Template.report.helpers({
 // EVENTS
 /////////////////////////////////////////////////////////////////////////
 function showTableMap(){
-          if(document.getElementById("rooms").children[0].classList.contains("chosen") || document.getElementById("rooms").children[1].classList.contains("chosen") || document.getElementById("rooms").children[2].classList.contains("chosen")){
-            console.log("room already chosen");
-          } else {
+          // if(document.getElementById("rooms").children[0].classList.contains("chosen") || document.getElementById("rooms").children[1].classList.contains("chosen") || document.getElementById("rooms").children[2].classList.contains("chosen")){
+          if(Session.get("roomchosen") == true){
+
+          }else{
             document.getElementById("rooms").children[0].classList.add("chosen");   // show table map
-            document.getElementsByClassName("tablemap")[0].classList.remove("hidden");
+            document.getElementsByClassName("tablemap-"+document.getElementById("rooms").children[0].dataset.room)[0].classList.remove("hidden");
           }
-          document.getElementById("tables").classList.remove("hidden");           //
+          document.getElementById("tables").classList.remove("hidden");
 }
 
 Template.meals.events({
@@ -354,7 +338,7 @@ function resetView(){
      buttons[i].classList.remove("chosen");
   }
   resetSideQuantity();
-  console.log("reset");
+  // console.log("reset");
 }
 
 Template.tables.events({
@@ -370,9 +354,10 @@ Template.tables.events({
         buttons[i].classList.remove("chosen");
       }
       event.currentTarget.classList.add("chosen");
+      Session.set("roomchosen", true);
       document.getElementById(room).parentNode.classList.remove("hidden");
     },
-    // click on table in the map
+    // click on a table in the map
     'click .table' : function(event){
         table = event.currentTarget.dataset.table; // get clicked table id
         // console.log("table = " + Tables.findOne({"_id": table}).title);
@@ -425,6 +410,7 @@ Template.tables.events({
         return false;
     }
 });
+
 
 Template.orders.events({
     'click button.cancel' : function(event){
@@ -537,7 +523,7 @@ Template.report.events({
   },
 
   'click #savepromo' : function(event){
-    console.log("Ukládám…");
+    // console.log("Ukládám…");
     Meals.update({_id: "8hNwA49epxX2i2hgG"}, {$set: {
       price: document.getElementById("frm_promoprice").value,
       title: "Akce: " + document.getElementById("frm_promotitle").value,
@@ -551,6 +537,7 @@ Template.chat.events({
     // open/close chat
     'click #openchat span' : function(event){
         document.getElementById("chat").classList.toggle("openedchat");
+        document.getElementById("messages").scrollTop = 9999;
         document.getElementById("orders").classList.toggle("openedchat");
     }
 });

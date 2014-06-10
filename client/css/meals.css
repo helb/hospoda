@@ -37,10 +37,10 @@ ul.meals li button{
 	color: #ddd;
 	border:0;
 	text-shadow: rgba(0,0,0,.5) 0px -1px 0px;
-/* 	-webkit-transition-property: height;
+-webkit-transition-property: height;
   	-webkit-transition-duration: 0.5s;
   	-webkit-transition-timing-function: ease-in-out;
-  	-webkit-transition-delay: 0.75s;*/
+  	-webkit-transition-delay: 0.75s;
 	padding: 0.5em;
 	font-family: 'open_sanscondensed_light';
 	text-transform: uppercase;
@@ -72,10 +72,10 @@ ul.meals li:hover span{
 	color: #fff;
 	background: #3aa6d0;
 	/*border-top:2px solid #fff;*/
-/* 	-webkit-transition-property: background-color;
+-webkit-transition-property: background-color;
 	-webkit-transition-duration: .15s;
 	-webkit-transition-timing-function: ease-in-out;
-	-webkit-transition-delay: 0; */
+	-webkit-transition-delay: 0;
 }
 
 ul.meals li:hover button{
@@ -85,10 +85,10 @@ ul.meals li:hover button{
 	cursor: pointer;
 	text-shadow: rgba(0,0,0,.25) 0px 1px 0px;
 	padding: 0.25em 0.5em 0.25em 0.5em;
-/* 	-webkit-transition-property: background-color;
+-webkit-transition-property: background-color;
 	-webkit-transition-duration: .15s;
 	-webkit-transition-timing-function: ease-in-out;
-	-webkit-transition-delay: 0; */
+	-webkit-transition-delay: 0;
 
 }
 

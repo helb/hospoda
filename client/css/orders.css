@@ -23,8 +23,6 @@ section#orders ul.orders li{
 	-webkit-box-shadow: 0px 2px 0px #222;
 	border-bottom: 1px solid #444;
 	margin-bottom: 1px;
-	/*overflow: hidden;*/
-
 }
 
 section#orders ul.orders li h3{

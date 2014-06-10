@@ -2,61 +2,55 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "chatworks": {},
       "fast-render": {},
       "collection2": {},
-      "buzz.js": {},
       "iron-router": {},
-      "pagemaster": {},
       "filter-collections": {},
+      "collection-helpers": {},
       "kadira": {},
-      "collection-helpers": {}
+      "inject-initial": {},
+      "chatworks": {}
     },
     "packages": {
-      "chatworks": {
-        "git": "https://github.com/Pent/chatworks.git",
-        "tag": "v1.7.0",
-        "commit": "a081d78cd9834bab9a7a1d6868dc7b88effc08cc"
-      },
       "fast-render": {
         "git": "https://github.com/arunoda/meteor-fast-render.git",
-        "tag": "v0.2.5",
-        "commit": "93e2fb334e55fbe9b5ebb2a2e65964018658f43e"
+        "tag": "v0.2.6",
+        "commit": "6ff59e07dc5ec9cd2f5d334ff95ff181d86965b5"
       },
       "collection2": {
         "git": "https://github.com/aldeed/meteor-collection2.git",
-        "tag": "v0.4.0",
-        "commit": "5648f7c53ee98f3ac8fbe82a55e6fd78fc67cfbc"
-      },
-      "buzz.js": {
-        "git": "https://github.com/brentjanderson/meteor-buzz.git",
-        "tag": "v1.1.0.1",
-        "commit": "5c579c9833a6633a38fb05db928a09ac0a3bbc7e"
+        "tag": "v0.4.1",
+        "commit": "a9ffc9b285c3af8ad631f9cda4851b0ffc30c5ce"
       },
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
         "tag": "v0.7.1",
         "commit": "d1ffb3f06ea4c112132b030f2eb1a70b81675ecb"
       },
-      "pagemaster": {
-        "git": "https://github.com/sterlingwes/meteor-pagemaster",
-        "tag": "v0.5.7",
-        "commit": "5e0b18dba69e4818f6c72e7cb6542c8bb41b7f99"
-      },
       "filter-collections": {
         "git": "https://github.com/julianmontagna/filter-collections.git",
         "tag": "v0.1.4",
         "commit": "87bc9cee7a23459e427d4613383be3f67f29245c"
       },
-      "kadira": {
-        "git": "https://github.com/meteorhacks/kadira.git",
-        "tag": "v2.1.4",
-        "commit": "c564bcd390af097af890a18ee4d4df7bdbc659dc"
-      },
       "collection-helpers": {
         "git": "https://github.com/dburles/meteor-collection-helpers.git",
         "tag": "v0.2.9",
         "commit": "912be6d15a59b9ee4519bf73000be70dd141b655"
+      },
+      "kadira": {
+        "git": "https://github.com/meteorhacks/kadira.git",
+        "tag": "v2.1.5",
+        "commit": "1d33f51a7228fc430fb1823276fcfeeb6f251255"
+      },
+      "inject-initial": {
+        "git": "https://github.com/gadicc/meteor-inject-initial.git",
+        "tag": "v0.0.8",
+        "commit": "90f2fbcc5b4bc17fa4d4535f47813e31d86033b4"
+      },
+      "chatworks": {
+        "git": "https://github.com/Pent/chatworks.git",
+        "tag": "v1.7.0",
+        "commit": "a081d78cd9834bab9a7a1d6868dc7b88effc08cc"
       },
       "simple-schema": {
         "git": "https://github.com/aldeed/meteor-simple-schema.git",

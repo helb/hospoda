@@ -1,13 +1,12 @@
 {
   "packages": {
-    "chatworks": {},
     "fast-render": {},
     "collection2": {},
-    "buzz.js": {},
     "iron-router": {},
-    "pagemaster": {},
     "filter-collections": {},
+    "collection-helpers": {},
     "kadira": {},
-    "collection-helpers": {}
+    "inject-initial": {},
+    "chatworks": {}
   }
 }

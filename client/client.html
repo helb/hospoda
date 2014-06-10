@@ -1,6 +1,6 @@
 <head>
   <meta charset="utf-8">
-  <title>hospoda</title>
+  <title>acw</title>
 </head>
 <body>
 </body>
@@ -17,8 +17,6 @@
   <section id="tables" class="hidden">{{> tables}}</section>
 </section>
 <section id="sidebar">
-{{!--   <span class="onlymine"><input id="frm_onlymine" name="frm_onlymine" type="checkbox">
-  <label for="frm_onlymine">Zobrazit jen moje objednávky</label></span> --}}
   <section id="sum" class="hospoda">Tržba: <span class="money">{{sum}},– Kč</span></section>
   <section id="orders" class="hospoda">{{> orders}}</section>
   <section id="chat">{{>chat}}</section>
@@ -48,7 +46,7 @@
 <section id="sum" class="hospoda">
   Tržba: <span class="money">{{sum}},– Kč</span>
 </section>
-  <section id="inventory">KUCHYNĚ</section>
+  <section id="inventory"></section>
   <section id="chat">{{>chat}}</section>
 </section>
 </template>
@@ -180,11 +178,13 @@
 <h3 class="category" id="tables-title">Stůl</h3>
 <ul id="rooms" class="rooms">
   {{#each rooms _id}}
-    <li class="room" data-room="{{_id}}">{{title}}</li>
+    {{#if is_mine}}
+      <li class="room" data-room="{{_id}}">{{title}}</li>
+    {{/if}}
   {{/each}}
 </ul>
 
-<div class="tablemap hidden">
+<div class="tablemap hidden tablemap-JfMgP9LgC8wat5FeH">
   <svg id="JfMgP9LgC8wat5FeH" class="saloon"> <!-- saloon bez koncertu -->
     <rect width="25" height="250" x="0" y="30" class="table" data-table="GNT6XuKRb978YFYm5" />         <!-- bar -->
     <rect width="25" height="200" x="0" y="300" class="table" data-table="uaxQDNQocMiHkE5tz" />       <!-- kuchyně -->
@@ -221,7 +221,7 @@
   </svg>
   </div>
 
-<div class="tablemap hidden">
+<div class="tablemap hidden tablemap-32m7hL4LJ7BnnGYBu">
   <svg id="32m7hL4LJ7BnnGYBu" class="saloon"> <!-- saloon s koncertem -->
     <rect width="25" height="250" x="0" y="30" class="table" data-table="GNT6XuKRb978YFYm5" />         <!-- bar -->
     <rect width="25" height="200" x="0" y="300" class="table" data-table="uaxQDNQocMiHkE5tz" />       <!-- kuchyně -->
@@ -256,7 +256,7 @@
 
   </svg>
 </div>
-<div class="tablemap hidden">
+<div class="tablemap hidden tablemap-iaTAf7uXB6WPSYamf">
     <svg id="iaTAf7uXB6WPSYamf" class="military"> <!-- military -->
     <text text-anchor="middle" x="550" y="240" fill="white">BAR</text>
     <rect width="250" height="25" x="425" y="220" class="table" data-table="CQZQWnMmW5JyHFYAC" />         <!-- bar -->
@@ -323,7 +323,24 @@
   </ul>
 </template>
 
-<template name="chat">
-  <nav id="openchat"><span>Chat</span></nav>{{> chatworks}}
+<template name="simplechat">
+<div id="simplechat">
+  <div id="messages">
+    {{#each messages}}
+      <div class="message chat-{{user}}">
+        <span class="username">{{user}}</span>
+        <span class="text">{{text}}</span>
+        <span class="timestamp">{{time timestamp}}</span>
+      </div>
+    {{/each}}
+  </div>
+  <div id="input">
+    <input type="text" id="chatmessage">
+  </div>
+</div>
 </template>
 
+<template name="chat">
+  <nav id="openchat"><span>Chat</span></nav>
+  {{>simplechat}}
+</template>
