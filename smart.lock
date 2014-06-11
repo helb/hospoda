@@ -14,8 +14,8 @@
     "packages": {
       "fast-render": {
         "git": "https://github.com/arunoda/meteor-fast-render.git",
-        "tag": "v0.2.6",
-        "commit": "6ff59e07dc5ec9cd2f5d334ff95ff181d86965b5"
+        "tag": "v0.2.7",
+        "commit": "93069af91bd4050435bc2834455a3c98f58bebd2"
       },
       "collection2": {
         "git": "https://github.com/aldeed/meteor-collection2.git",
