@@ -10,18 +10,27 @@ Meteor.startup(function() {
 });
 
 
+Meteor.publishAuth = function(name, fn) {
+  Meteor.publish(name, function() {
+    if (! this.userId)
+      return this.ready();
+
+    return fn.apply(this, arguments);
+  });
+};
+
 
 /* Orders */
 
-Meteor.publish("reportOrders", function () {
+Meteor.publishAuth("reportOrders", function () {
     return Orders.find(); //omezit na datum + omezit pole
 });
 
-Meteor.publish("kitchenOrders", function () {
+Meteor.publishAuth("kitchenOrders", function () {
     return Orders.find({is_archived: { $ne: true}}); //omezit pole
 });
 
-Meteor.publish("pubOrders", function () {
+Meteor.publishAuth("pubOrders", function () {
     return Orders.find({author_id: this.userId, is_archived: { $ne: true}}); //omezit pole
 });
 
@@ -33,7 +42,7 @@ Meteor.publish("pubOrders", function () {
     return Meals.find({active: true}); //omezit pole
 });*/
 
-Meteor.publish("allMeals", function () {
+Meteor.publishAuth("allMeals", function () {
     return Meals.find(); //omezit pole
 });
 
@@ -41,7 +50,7 @@ Meteor.publish("allMeals", function () {
     return Categories.find({display: true}); //omezit pole
 });*/
 
-Meteor.publish("allCategories", function () {
+Meteor.publishAuth("allCategories", function () {
     return Categories.find(); //omezit pole
 });
 
@@ -49,7 +58,7 @@ Meteor.publish("allCategories", function () {
 
 /* Tables & Rooms */
 
-Meteor.publish("allRooms", function () {
+Meteor.publishAuth("allRooms", function () {
     return Rooms.find(); //omezit pole
 });
 
@@ -57,13 +66,13 @@ Meteor.publish("allRooms", function () {
     return Orders.find({user_id: this.userId}); //omezit pole
 });
 */
-Meteor.publish("allTables", function () {
+Meteor.publishAuth("allTables", function () {
     return Tables.find(); //omezit pole
 });
 
 
 /* Chat */
 
-Meteor.publish("chatMessages", function () {
+Meteor.publishAuth("chatMessages", function () {
     return Messages.find();
 });

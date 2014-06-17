@@ -31,6 +31,7 @@ Template.report.rendered = function() {
   document.getElementById('frm_promotitle').value = promoMeal.title.replace("Akce: ", "");
 }
 
+
 Template.meals.categories = function () {
   return Categories.find({display: true}, { sort: { position: 1 }});
 }

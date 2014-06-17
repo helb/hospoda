@@ -4,3 +4,9 @@ nav#login{
 	top:0.2rem;
 	position: absolute;
 }
+
+section#report nav#login{
+	position: inherit;
+	float: right;
+	margin:-2rem 0 0 0;
+}
