@@ -6,7 +6,6 @@
     "filter-collections": {},
     "collection-helpers": {},
     "kadira": {},
-    "inject-initial": {},
-    "chatworks": {}
+    "inject-initial": {}
   }
 }
