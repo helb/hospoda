@@ -60,6 +60,7 @@ div#simplechat div.message{
 	line-height: 1.5em;
 	padding-right: 0.5em;
 	display: table-row;
+	width: 90%;
 }
 
 div#simplechat div.message:nth-child(odd){
