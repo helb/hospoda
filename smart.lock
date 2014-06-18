@@ -38,8 +38,8 @@
       },
       "kadira": {
         "git": "https://github.com/meteorhacks/kadira.git",
-        "tag": "v2.4.0",
-        "commit": "18ac6e2b054f891560063427bfa36c817e585567"
+        "tag": "v2.4.1",
+        "commit": "b0de26c879f1e7a32d82cab53770ccbb00a1c5ab"
       },
       "inject-initial": {
         "git": "https://github.com/gadicc/meteor-inject-initial.git",
