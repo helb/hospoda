@@ -6,6 +6,7 @@
     "filter-collections": {},
     "collection-helpers": {},
     "kadira": {},
-    "inject-initial": {}
+    "inject-initial": {},
+    "auto-nprogress": {}
   }
 }
