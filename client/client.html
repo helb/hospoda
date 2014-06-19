@@ -5,9 +5,13 @@
 <body>
 </body>
 
+<template name="login">
+  <nav id="login">{{>loginButtons}}</nav>
+</template>
+
 <template name="hospoda">
 <section id="main">
-<nav id="login">{{>loginButtons}}</nav>
+{{>login}}
   <section id="meals">{{> meals}}</section>
   <section id="cancel" class="hidden">{{> cancel}}</section>
   <section id="variants" class="hidden">{{> variants}}</section>
@@ -34,7 +38,7 @@
 
 <template name="kuchyne">
 <section id="main">
-<nav id="login">{{>loginButtons}}</nav>
+{{>login}}
 <section id="orders" class="kuchyne">
   <h3 class="category">Objednávky</h3>
   {{>orders}}
@@ -53,13 +57,13 @@
 
 <template name="report">
 <section id="report">
-<nav id="login">{{>loginButtons}}</nav>
 <header>
   <input id="frm_daydisplay" name="frm_daydisplay" type="date" />
 <span id="stats">
  {{order_count}} vydaných objednávek, tržba: {{sum}},– Kč
 </span>
 </header>
+{{>login}}
 <section id="setpromo">
   <input id="frm_promoactive" name="frm_promoactive" type="checkbox"><label for="frm_promoactive">Akce platí</label>
   <label for="frm_promoprice">Cena:</label><input id="frm_promoprice" name="frm_promoprice" type="number" min="0">
