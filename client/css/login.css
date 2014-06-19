@@ -5,8 +5,24 @@ nav#login{
 	position: absolute;
 }
 
+/*section#report nav#login{
+	position: inherit;
+	margin:-2rem 0 0 0;
+	border: 1px solid red;
+	width: 100%;
+	text-align: right;
+	padding-right: 5rem;
+}
+*/
+
 section#report nav#login{
 	position: inherit;
-	float: right;
-	margin:-2rem 0 0 0;
+	float: left;
+	margin-top: 0.5rem;
+	text-align: left;
+}
+
+section#report nav#login input{
+	font-size: 1rem;
+	text-align: left;
 }
