@@ -9,6 +9,7 @@ Meteor.startup(function() {
   });
 });
 
+Accounts.config({loginExpirationInDays: null, forbidClientAccountCreation: true});
 
 Meteor.publishAuth = function(name, fn) {
   Meteor.publish(name, function() {

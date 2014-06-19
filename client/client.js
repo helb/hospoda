@@ -7,9 +7,10 @@ jidla:
 admin
 */
 
+Accounts.config({loginExpirationInDays: null, forbidClientAccountCreation: true});
 
 Date.prototype.addDays = function(days) {
-    this.setDate(this.getDate() + days);
+    this.setDate(this.getDate() + days);1
     return this;
 };
 
