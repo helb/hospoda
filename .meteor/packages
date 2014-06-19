@@ -14,3 +14,4 @@ filter-collections
 collection-helpers
 kadira
 inject-initial
+auto-nprogress
