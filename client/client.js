@@ -3,8 +3,6 @@ TODO
 hospoda:
   moznost objednat samostatnou prilohu/omacku vickrat
   moznost pridat vic omacek
-  auto-vyber prvni varianty jidla
-  scroll v chatu (i kuchyne)
 
 miki:
   report sub podle datumu
