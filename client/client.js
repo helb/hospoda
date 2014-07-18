@@ -543,7 +543,7 @@ Template.chat.events({
     // open/close chat
     'click #openchat span' : function(event){
         document.getElementById("chat").classList.toggle("openedchat");
-        document.getElementById("messages").scrollTop = 9999;
+        document.getElementById("messages").scrollTop = document.getElementById("messages").scrollHeight;
         document.getElementById("orders").classList.toggle("openedchat");
     }
 });

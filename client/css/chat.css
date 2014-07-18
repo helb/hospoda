@@ -13,6 +13,7 @@ nav#openchat span{
 	text-transform: uppercase;
 	text-align: center;
 	min-height: 2rem;
+	-webkit-transition: background-color 300ms linear;
 }
 
 nav#openchat span:hover{
@@ -125,4 +126,10 @@ div.chat-helb span.username{
 	color: #fff;
 	background-color: #a31800;
 	background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,#8f0222 70%,#a31800 100%);
+}
+
+
+nav#openchat.blink span{
+ 		background-color: #3aa6d0;
+    -webkit-transition: background-color 300ms linear;
 }

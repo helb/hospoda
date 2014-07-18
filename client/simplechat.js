@@ -1,18 +1,5 @@
 Meteor.subscribe('chatMessages');
 
-var stringToColour = function(str) {
-    var hash = 0;
-    for (var i = 0; i < str.length; i++) {
-        hash = str.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    var colour = '#';
-    for (var i = 0; i < 3; i++) {
-        var value = (hash >> (i * 8)) & 0xFF;
-        colour += ('00' + value.toString(16)).substr(-2);
-    }
-    return colour;
-}
-
 Template.simplechat.helpers({
   messages: function(){
     return Messages.find({}, {sort: {timestamp: 1}});
@@ -32,7 +19,6 @@ Template.simplechat.events({
       event.currentTarget.value = "";
       event.currentTarget.focus();
       }
-      document.getElementById("messages").scrollTop = 9999;
     }
   }
 });
@@ -42,4 +28,18 @@ Template.simplechat.rendered = function() {
     this._rendered = true;
     document.getElementById("chatmessage").placeholder="Napiš zprávu a odešli Enterem";
   }
+  newchatmessages = Messages.find({'timestamp': {$gte: new Date()}}, {sort: {timestamp: 1}});
+  newchatmessages.observe({
+    added: function (message) {
+      $("#messages").animate({ scrollTop: $("#messages")[0].scrollHeight }, 600);
+      if(!document.getElementById("chat").classList.contains("openedchat")){
+        document.getElementById("chat").classList.toggle("openedchat");
+        document.getElementById("orders").classList.toggle("openedchat");
+      }
+      document.getElementById("openchat").classList.add("blink");
+      setTimeout(function() {
+            document.getElementById("openchat").classList.remove("blink");
+        }, 300)
+    },
+  });
 }
