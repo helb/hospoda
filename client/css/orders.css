@@ -164,12 +164,12 @@ section#orders.hospoda ul.orders li.cooked h3{
 }
 
 @-webkit-keyframes cooked{
-/*	0%   {background:#689f14;}
+	0%   {background:#689f14;}
 	50%  {background:#333;}
-	100% {background:#689f14;}*/
-	0%   {opacity:1;}
+	100% {background:#689f14;}
+/*	0%   {opacity:1;}
 	50%  {opacity:0;}
-	100% {opacity:1;}
+	100% {opacity:1;}*/
 }
 
 
@@ -198,12 +198,12 @@ section#orders.kuchyne ul.orders li.new h3{
 }
 
 @-webkit-keyframes new{
-/*	0%   {background:#cd0052;}
+	0%   {background:#cd0052;}
 	50%  {background:#333;}
-	100% {background:#de0052;}*/
-	0%   {opacity:1;}
-	50%  {opacity:0;}
-	100% {opacity:1;}
+	100% {background:#de0052;}
+/*	0%   {opacity:1;}
+	50%  {opacity:0.3;}
+	100% {opacity:1;}*/
 }
 
 section#orders ul.orders li.new:hover h3{
