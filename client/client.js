@@ -199,6 +199,7 @@ function showTableMap(){
 Template.meals.events({
     // click on meal button
     'click li.meal' : function(event){
+      event.preventDefault();
         meal = event.currentTarget.dataset.meal;
         if(Meals.findOne({variant_of: meal})){ // if meal has variants
           document.getElementsByName("frm_meal").value = meal;
@@ -219,8 +220,12 @@ Template.meals.events({
             document.getElementById("orderoptions").classList.remove("hidden"); // move this line outside of "if" when there are more options than just half portion
             document.getElementById("half").classList.remove("hidden");
           }
+          setTimeout(function() {
+            document.getElementsByClassName("variant")[0].classList.add("chosen");
+            document.getElementsByName("frm_meal").value = document.getElementsByClassName("variant")[0].dataset.meal;
+            console.log("meal set to " + document.getElementsByClassName("variant")[0].dataset.meal);
+          }, 100);
           showTableMap();
-          return false;
         } else { // meal without variants, switch view
           document.getElementsByName("frm_meal").value = meal;
           document.getElementById("meals").classList.add("hidden");
@@ -240,7 +245,6 @@ Template.meals.events({
           }
           // console.log("frm_meal = " + document.getElementsByName("frm_meal").value);
           showTableMap();
-          return false;
       }
     }
 });
@@ -366,7 +370,7 @@ Template.tables.events({
         table = event.currentTarget.dataset.table; // get clicked table id
         // console.log("table = " + Tables.findOne({"_id": table}).title);
         document.getElementsByName("frm_table").value = table; // and set it to form field
-        if(document.getElementsByName("frm_meal").value == null){ // ??
+        if(document.getElementsByName("frm_meal").value == null){ // if meal has variants
           document.getElementsByName("frm_meal").value = document.getElementsByClassName("chosen")[0].dataset.meal;
         }
         var priceform = document.getElementsByName("frm_price");
