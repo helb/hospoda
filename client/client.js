@@ -223,7 +223,7 @@ Template.meals.events({
           setTimeout(function() {
             document.getElementsByClassName("variant")[0].classList.add("chosen");
             document.getElementsByName("frm_meal").value = document.getElementsByClassName("variant")[0].dataset.meal;
-            console.log("meal set to " + document.getElementsByClassName("variant")[0].dataset.meal);
+            // console.log("meal set to " + document.getElementsByClassName("variant")[0].dataset.meal);
           }, 100);
           showTableMap();
         } else { // meal without variants, switch view
