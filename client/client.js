@@ -22,6 +22,8 @@ Date.prototype.toDateInputValue = (function() {
     return local.toJSON().slice(0,10);
 });
 
+
+
 var variants_dep = new Deps.Dependency();
 // var orders_dep = new Deps.Dependency();
 
@@ -537,7 +539,15 @@ Template.report.events({
       title: "Akce: " + document.getElementById("frm_promotitle").value,
       active: document.getElementById("frm_promoactive").checked
     }});
-   }
+   },
+
+   'click span#stats' : function(event){
+    sum = 0;
+    allOrders = Orders.find({is_cancelled: {$ne: true}}).map(function(doc) {
+      sum += doc.price;
+    });
+    console.log("Celkem " + sum + " Kč.");
+  }
 
 });
 
