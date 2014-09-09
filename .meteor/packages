@@ -6,12 +6,8 @@
 standard-app-packages
 accounts-ui
 accounts-password
-fast-render
-collection2
 accounts-base
-iron-router
-filter-collections
-collection-helpers
-kadira
-inject-initial
-auto-nprogress
+aldeed:collection2
+iron:router
+meteorhacks:kadira
+
