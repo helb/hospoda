@@ -7,15 +7,9 @@ section#orders{
 	overflow-y: scroll;
 }
 
-/*section#orders.openedchat{
-	height: 75%;
-}*/
-
 section#orders ul.orders{
 	list-style: none;
 }
-
-
 
 section#orders ul.orders li{
 	height: 2rem;
@@ -44,17 +38,6 @@ section#orders ul.orders li h3{
 	-webkit-mask-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 65%, rgba(0, 0, 0, 0) 100%);
 }
 
-
-/*section#orders ul.orders li h3 span.half{
-	font-size: 1.5em;
-	line-height: 2rem;
-}
-
-section#orders ul.orders li h3:first-letter{
-	font-size: 1.5em;
-	line-height: 2rem;
-}
-*/
 section#orders ul.orders li ul.info{
 	float:left;
 	list-style: none;
@@ -62,14 +45,9 @@ section#orders ul.orders li ul.info{
 	width:25%;
 	padding:0.3rem 0.3rem 0 0;
 	text-align: right;
-/*	font-size: 1rem;
-	line-height: 1.2rem;*/
 	cursor: default;
 	height:2rem;
-	/*display: block;*/
 	font-size: 0.9rem;
-	/*line-height: 0.3rem;*/
-	/*border: 1px solid red;*/
 	text-shadow: rgba(0,0,0,.75) 0px 1px 0px;
 	text-align: right;
 }
@@ -167,9 +145,6 @@ section#orders.hospoda ul.orders li.cooked h3{
 	0%   {background:#689f14;}
 	50%  {background:#333;}
 	100% {background:#689f14;}
-/*	0%   {opacity:1;}
-	50%  {opacity:0;}
-	100% {opacity:1;}*/
 }
 
 
@@ -186,7 +161,6 @@ section#orders ul.orders li.cooked:hover h3{
 /* new */
 
 section#orders ul.orders li.new h3{
-	/*border-left: 0.5em solid #de0052;*/
 	background: #de0052;
 }
 
@@ -201,9 +175,6 @@ section#orders.kuchyne ul.orders li.new h3{
 	0%   {background:#cd0052;}
 	50%  {background:#333;}
 	100% {background:#de0052;}
-/*	0%   {opacity:1;}
-	50%  {opacity:0.3;}
-	100% {opacity:1;}*/
 }
 
 section#orders ul.orders li.new:hover h3{
@@ -215,12 +186,10 @@ section#orders ul.orders li.new:hover h3{
 /* issued */
 
 section#orders ul.orders li.issued h3{
-	/*border-left: 0.5em solid #689f14;*/
 	-webkit-mask-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 65%, rgba(0, 0, 0, 0) 100%);
 }
 
 section#orders ul.orders li.issued h3:before{
-	/*content: "✔";*/
 	content: "✓";
 	color: #aaa;
 	margin-right: 0.5rem;
@@ -274,7 +243,6 @@ section#orders ul.orders li.cancelled:hover button{
 
 
 section#orders ul.orders li.cancelled:hover h3{
-	/*width: 88%;*/
 	color: #ddd;
 	background: #333;
 	-webkit-mask-image: none;
@@ -307,13 +275,6 @@ li:hover span.price{
 section#orders.kuchyne{
 	height: 100%;
 }
-
-/* section#orders.kuchyne h3{
-	background: #a61300;
-	border-bottom: 1px solid #ff1e00;
-	border-right: 1px solid #6c0d00;
-	-webkit-box-shadow: 0px 2px 0px #6c0d00;
-} */
 
 section#orders.kuchyne ul.orders{
 	margin-top: 1.6rem;

@@ -5,16 +5,6 @@ nav#login{
 	position: absolute;
 }
 
-/*section#report nav#login{
-	position: inherit;
-	margin:-2rem 0 0 0;
-	border: 1px solid red;
-	width: 100%;
-	text-align: right;
-	padding-right: 5rem;
-}
-*/
-
 section#report nav#login{
 	position: inherit;
 	float: left;

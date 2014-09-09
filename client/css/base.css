@@ -28,7 +28,6 @@ section#main{
 section#sidebar{
 	width: 30%;
 	min-width:15rem;
-	/*max-width: 25rem;*/
 	float:right;
 	height:100%;
 	background: #333;

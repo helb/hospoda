@@ -45,7 +45,6 @@ section#chat div.message span.timestamp{
 
 
 div#simplechat div#messages{
-	/*width: 100%;*/
 	height: 19rem;
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -71,7 +70,6 @@ div#simplechat div.message span.username{
 	width: 5em;
 	text-align: right;
 	display: table-cell;
-	/*border-right: 1px solid #222;*/
 	padding: 0 0.5em 0 0.5em;
 }
 
