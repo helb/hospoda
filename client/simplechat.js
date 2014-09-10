@@ -10,8 +10,8 @@ Template.simplechat.helpers({
 });
 
 Template.simplechat.events({
-  'keyup #chatmessage' : function(event) {
-    if (event.type === 'keyup' && event.which === 13) { // 13 == enter
+  'keydown #chatmessage' : function(event) {
+    if (event.type === 'keydown' && event.which === 13) { // 13 == enter
       if (event.currentTarget.value.replace(/\s/g, '').length){
       Messages.insert({user: Meteor.user().username, text: event.currentTarget.value, timestamp: new Date()});
 
