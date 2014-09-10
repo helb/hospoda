@@ -10,4 +10,6 @@ accounts-base
 aldeed:collection2
 iron:router
 meteorhacks:kadira
+aldeed:simple-schema
+dburles:collection-helpers
 
