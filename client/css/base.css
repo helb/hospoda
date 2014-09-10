@@ -4,17 +4,20 @@ html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address
 @font-face {
     font-family: 'open_sanscondensed_light';
     src: url('/OpenSans-CondLight-webfont.ttf');
+    font-weight: light;
 }
 
 @font-face {
     font-family: 'open_sansregular';
     src: url('/OpenSans-Regular-webfont.ttf');
+    font-weight: normal;
 }
 
 html, body { height: 100%; width: 100%; margin: 0; }
 
 body{
-	font-family: 'open_sanscondensed_light';
+	font-family: 'open_sanscondensed_light', sans-serif;
+  font-weight: light;
 	font-size: 14px;
 	background-image: url("/images/darkwood.png");
 }
@@ -45,5 +48,4 @@ section#sidebar{
   box-sizing: border-box;         /* Opera/IE 8+ */
   cursor: default;
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
 }
