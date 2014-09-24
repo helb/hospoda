@@ -523,6 +523,7 @@ Template.kuchyne.events({
     // Orders.update({is_archived: false}, {$set: {is_archived: true}}, {multi:true});
     event.currentTarget.classList.add("hidden"); //hide "begin" button
     event.currentTarget.parentNode.children[0].classList.remove("hidden"); //show "end" button
+    Meteor.call("cleanChat");
   }
 });
 
