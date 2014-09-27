@@ -65,10 +65,12 @@
 </header>
 {{>login}}
 <section id="setpromo">
+<form id="promoform">
   <input id="frm_promoactive" name="frm_promoactive" type="checkbox"><label for="frm_promoactive">Akce platí</label>
-  <label for="frm_promoprice">Cena:</label><input id="frm_promoprice" name="frm_promoprice" type="number" min="0">
-  <label for="frm_promotitle">Název:</label><input id="frm_promotitle" name="frm_promotitle" type="text" min="0">
-  <button id="savepromo">Uložit</button>
+  <label for="frm_promoprice">Cena:</label><input id="frm_promoprice" name="frm_promoprice" type="number" pattern="\d*" required>
+  <label for="frm_promotitle">Název:</label><input id="frm_promotitle" name="frm_promotitle" type="text" min="1" required>
+  <button type="submit" id="savepromo">Uložit</button>
+</form>
 </section>
   <table>
     <thead>

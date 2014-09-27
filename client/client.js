@@ -528,12 +528,12 @@ Template.kuchyne.events({
 });
 
 Template.report.events({
-  'change input' : function(event){
-    //console.log(event.currentTarget.value);
+  'change input#frm_daydisplay' : function(event){
+//    console.log(event.currentTarget.value);
     Session.set("displaydate", event.currentTarget.value);
   },
 
-  'click #savepromo' : function(event){
+  'form#promoform submit' : function(event){
     // console.log("Ukládám…");
     Meals.update({_id: "8hNwA49epxX2i2hgG"}, {$set: {
       price: document.getElementById("frm_promoprice").value,
