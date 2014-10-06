@@ -29,11 +29,6 @@ var variants_dep = new Deps.Dependency();
 
 Template.report.rendered = function() {
   document.getElementById('frm_daydisplay').value = new Date().toDateInputValue();
-
-  promoMeal = Meals.findOne({_id: "8hNwA49epxX2i2hgG"});
-  document.getElementById('frm_promoactive').checked = promoMeal.active;
-  document.getElementById('frm_promoprice').value = promoMeal.price;
-  document.getElementById('frm_promotitle').value = promoMeal.title.replace("Akce: ", "");
 }
 
 
@@ -534,12 +529,18 @@ Template.report.events({
   },
 
   'form#promoform submit' : function(event){
-    // console.log("Ukládám…");
+    console.log("Ukládám…");
+    console.log(" ");
+    console.log("price: " + document.getElementById("frm_promoprice").value);
+    console.log("title: " + document.getElementById("frm_promotitle").value);
+    console.log("active: " + document.getElementById("frm_promoactive").checked);
+
     Meals.update({_id: "8hNwA49epxX2i2hgG"}, {$set: {
       price: document.getElementById("frm_promoprice").value,
       title: "Akce: " + document.getElementById("frm_promotitle").value,
       active: document.getElementById("frm_promoactive").checked
     }});
+    event.preventDefault();
    },
 
    'click span#stats' : function(event){
@@ -548,8 +549,17 @@ Template.report.events({
       sum += doc.price;
     });
     console.log("Celkem " + sum + " Kč.");
-  }
+  },
 
+  'click button#showpromo' : function(event){
+    var promoMeal = Meals.findOne({_id: "8hNwA49epxX2i2hgG"});
+    // console.log(promoMeal);
+    document.getElementById('frm_promoactive').checked = promoMeal.active;
+    document.getElementById('frm_promoprice').value = promoMeal.price;
+    document.getElementById('frm_promotitle').value = promoMeal.title.replace("Akce: ", "");
+    document.getElementById('promoform').classList.remove("hidden");
+    event.currentTarget.classList.add("hidden");
+  }
 });
 
 Template.chat.events({
