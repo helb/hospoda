@@ -49,7 +49,7 @@ Template.hospoda.helpers({
     orders = Orders.find({author_id: Meteor.userId() , is_issued: true, is_archived: { $ne: true}}).fetch();
     var sum = 0;
     for(var i = 0 ; i < orders.length; i++){
-      sum += orders[i].price;
+      sum += parseInt(orders[i].price);
     }
     return sum;
   }
@@ -60,7 +60,7 @@ Template.kuchyne.helpers({
     orders = Orders.find({is_issued: true, is_archived: { $ne: true}}).fetch();
     var sum = 0;
     for(var i = 0 ; i < orders.length; i++){
-      sum += orders[i].price;
+      sum += parseInt(orders[i].price);
     }
     return sum;
   }
@@ -153,7 +153,7 @@ Template.report.helpers({
     var orders = Orders.find({is_issued: true, created: {$gte: start, $lte: end}}).fetch();
     var sum = 0;
     for(var i = 0 ; i < orders.length; i++){
-      sum += orders[i].price;
+      sum += parseInt(orders[i].price);
     }
     return sum;
   },
@@ -400,7 +400,7 @@ Template.tables.events({
           side_quantity: document.getElementsByName("frm_side_quantity").value,
           condiment_id: document.getElementsByName("frm_condiment").value,
           table_id: document.getElementsByName("frm_table").value,
-          price: document.getElementsByName("frm_price").value,
+          price: parseInt(document.getElementsByName("frm_price").value),
           created: new Date(),
           is_new: true,
           is_cancelled: false,
@@ -461,7 +461,7 @@ Template.orders.events({
             side_quantity: order.side_quantity,
             condiment_id: order.condiment_id,
             table_id: order.table_id,
-            price: order.price,
+            price: parseInt(order.price),
             created: new Date(),
             is_new: true,
             is_cancelled: false,
@@ -545,7 +545,7 @@ Template.report.events({
       } else {
         Meals.update({_id: "8hNwA49epxX2i2hgG"}, {$unset: {price: false}});
         Meals.update({_id: "8hNwA49epxX2i2hgG"}, {$set: {
-          price: price,
+          price: parseInt(price),
           title: "Akce: " + title,
           active: document.getElementById("frm_promoactive").checked
         }});
@@ -556,7 +556,7 @@ Template.report.events({
    'click span#stats' : function(event){
     sum = 0;
     allOrders = Orders.find({is_cancelled: {$ne: true}}).map(function(doc) {
-      sum += doc.price;
+      sum += doc.parseInt(price);
     });
     console.log("Celkem " + sum + " Kč.");
   },
