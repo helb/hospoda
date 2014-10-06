@@ -524,23 +524,33 @@ Template.kuchyne.events({
 
 Template.report.events({
   'change input#frm_daydisplay' : function(event){
-//    console.log(event.currentTarget.value);
     Session.set("displaydate", event.currentTarget.value);
   },
 
-  'form#promoform submit' : function(event){
+  'click button#savepromo' : function(event){
     console.log("Ukládám…");
     console.log(" ");
     console.log("price: " + document.getElementById("frm_promoprice").value);
     console.log("title: " + document.getElementById("frm_promotitle").value);
     console.log("active: " + document.getElementById("frm_promoactive").checked);
 
-    Meals.update({_id: "8hNwA49epxX2i2hgG"}, {$set: {
-      price: document.getElementById("frm_promoprice").value,
-      title: "Akce: " + document.getElementById("frm_promotitle").value,
-      active: document.getElementById("frm_promoactive").checked
-    }});
-    event.preventDefault();
+    var price = document.getElementById("frm_promoprice").value;
+    var title = document.getElementById("frm_promotitle").value;
+
+    if(!parseInt(price)){
+      alert("Chyba v ceně");
+    } else {
+      if(title.length < 1){
+        alert("Chyba v názvu");
+      } else {
+        Meals.update({_id: "8hNwA49epxX2i2hgG"}, {$unset: {price: false}});
+        Meals.update({_id: "8hNwA49epxX2i2hgG"}, {$set: {
+          price: price,
+          title: "Akce: " + title,
+          active: document.getElementById("frm_promoactive").checked
+        }});
+      }
+    }
    },
 
    'click span#stats' : function(event){
@@ -554,11 +564,11 @@ Template.report.events({
   'click button#showpromo' : function(event){
     var promoMeal = Meals.findOne({_id: "8hNwA49epxX2i2hgG"});
     // console.log(promoMeal);
+    event.currentTarget.classList.add("hidden");
     document.getElementById('frm_promoactive').checked = promoMeal.active;
     document.getElementById('frm_promoprice').value = promoMeal.price;
     document.getElementById('frm_promotitle').value = promoMeal.title.replace("Akce: ", "");
     document.getElementById('promoform').classList.remove("hidden");
-    event.currentTarget.classList.add("hidden");
   }
 });
 
