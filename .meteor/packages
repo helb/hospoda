@@ -12,4 +12,5 @@ iron:router
 meteorhacks:kadira
 aldeed:simple-schema
 dburles:collection-helpers
+mizzao:timesync
 
