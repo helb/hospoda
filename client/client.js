@@ -31,18 +31,18 @@ Template.report.rendered = function() {
   document.getElementById('frm_daydisplay').value = new Date().toDateInputValue();
 }
 
-
-Template.meals.categories = function () {
-  return Categories.find({display: true}, { sort: { position: 1 }});
-}
-
-Template.meals.meals = function(parent) {
-  if (parent) {
-    return Meals.find({category_id:parent}, { sort: { position: 1 }}).fetch();
-  } else {
-    return Meals.find({category_id:{$exists:false}});
+Template.meals.helpers({
+  categories: function(){
+    return Categories.find({display: true}, { sort: { position: 1 }});
+  },
+  meals: function(parent){
+    if (parent) {
+      return Meals.find({category_id:parent}, { sort: { position: 1 }}).fetch();
+    } else {
+      return Meals.find({category_id:{$exists:false}});
+    }
   }
-}
+})
 
 Template.hospoda.helpers({
   sum: function(){
@@ -66,27 +66,33 @@ Template.kuchyne.helpers({
   }
 })
 
-Template.variants.categories = function () {
-  return Categories.find({}, { sort: { position: 1 }});
-}
+Template.variants.helpers({
+  categories: function(){
+    return Categories.find({}, { sort: { position: 1 }});
+  },
+  variants: function(){
+    variants_dep.depend();
+    return Meals.find({variant_of: document.getElementsByName("frm_meal").value}, { sort: { position: 1 }}).fetch();
+  }
+})
 
-Template.variants.variants = function() {
-  variants_dep.depend();
-  return Meals.find({variant_of: document.getElementsByName("frm_meal").value}, { sort: { position: 1 }}).fetch();
-}
+Template.sides.helpers({
+  sides: function() {
+    return Meals.find({is_side: true}).fetch();
+  }
+})
 
-Template.sides.sides = function() {
-  return Meals.find({is_side: true}).fetch();
-}
+Template.condiments.helpers({
+  condiments: function() {
+    return Meals.find({is_condiment: true}).fetch();
+  }
+})
 
-Template.condiments.condiments = function() {
-  return Meals.find({is_condiment: true}).fetch();
-}
-
-Template.tables.rooms = function () {
-  // var id = Meteor.userId();
-  return Rooms.find({}, { sort: { position: 1 }});
-}
+Template.tables.helpers({
+  rooms: function() {
+    return Rooms.find({}, { sort: { position: 1 }});
+  }
+})
 
 Template.orders.helpers({
   orders: function(){
