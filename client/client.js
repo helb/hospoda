@@ -1,14 +1,3 @@
-/*
-TODO
-hospoda:
-  moznost objednat samostatnou prilohu/omacku vickrat
-  moznost pridat vic omacek
-
-miki:
-  report sub podle datumu
-  admin
-*/
-
 Accounts.config({loginExpirationInDays: null, forbidClientAccountCreation: true});
 
 Date.prototype.addDays = function(days) {
@@ -25,7 +14,6 @@ Date.prototype.toDateInputValue = (function() {
 
 
 var variants_dep = new Deps.Dependency();
-// var orders_dep = new Deps.Dependency();
 
 Template.report.rendered = function() {
   document.getElementById('frm_daydisplay').value = new Date().toDateInputValue();
@@ -96,12 +84,7 @@ Template.tables.helpers({
 
 Template.orders.helpers({
   orders: function(){
-    // orders_dep.depend();
-    // if(document.getElementById("frm_onlymine").checked){
-    // return Orders.find({author_id: Meteor.userId(), is_archived: { $ne: true}}, { sort: { created: -1 }});
-    // } else {
     return Orders.find({is_archived: { $ne: true}}, { sort: { created: -1 }});
-    // }
   },
 
   meals: function(order){
@@ -109,8 +92,6 @@ Template.orders.helpers({
   },
 
   not_mine: function(order){
-    // console.log(this.author_id);
-    // console.log(Meteor.userId());
     if(this.author_id != Meteor.userId()){
       return true;
     } else {
@@ -136,14 +117,11 @@ Template.report.helpers({
       Session.set("displaydate", now.getFullYear() + "-" + month + "-" + now.getDate());
     }
     date = Session.get("displaydate");
-    // dayend = day.getTime() + 1 * 86400000;
-    // return Orders.find({created: {$gte: new Date(day) , $lt: new Date(dayend) }}, { sort: { created: -1 }});
     var start = new Date(date);
     start.setHours(4);
     var end = new Date(date);
     end.addDays(1);
     return Orders.find({created: {$gte: start, $lte: end}}, {sort:{created: -1}});
-    // return Orders.find({}, { sort: { created: -1 }});
   },
   sum: function(){
     if(!Session.get("displaydate")){
@@ -189,7 +167,6 @@ Template.report.helpers({
 // EVENTS
 /////////////////////////////////////////////////////////////////////////
 function showTableMap(){
-          // if(document.getElementById("rooms").children[0].classList.contains("chosen") || document.getElementById("rooms").children[1].classList.contains("chosen") || document.getElementById("rooms").children[2].classList.contains("chosen")){
           if(Session.get("roomchosen") == true){
 
           }else{
@@ -426,12 +403,7 @@ Template.tables.events({
 Template.orders.events({
     'click button.cancel' : function(event){
       var order_id = event.currentTarget.parentNode.parentNode.dataset.order;
-      // console.log("clicked cancel");
-      // console.log("order_id = " + order_id);
-      // console.log("classList = " + event.currentTarget.parentNode.parentNode.parentNode.parentNode.classList);
       if(event.currentTarget.parentNode.parentNode.parentNode.parentNode.classList.contains("hospoda")){ // if in pub view
-        // console.log("author_id = " + Orders.findOne({_id: order_id}).author_id);
-        // console.log("userId = " + Meteor.userId());
         if(Orders.findOne({_id: order_id}).author_id == Meteor.userId()){ // if created by current user
           Orders.update({_id: event.currentTarget.dataset.order}, {$set: {is_cancelled: true}}); // mark order as cancelled
         }
@@ -569,7 +541,6 @@ Template.report.events({
 
   'click button#showpromo' : function(event){
     var promoMeal = Meals.findOne({_id: "8hNwA49epxX2i2hgG"});
-    // console.log(promoMeal);
     event.currentTarget.classList.add("hidden");
     document.getElementById('frm_promoactive').checked = promoMeal.active;
     document.getElementById('frm_promoprice').value = promoMeal.price;
