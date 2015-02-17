@@ -13,7 +13,7 @@ Template.simplechat.events({
   'keydown #chatmessage' : function(event) {
     if (event.type === 'keydown' && event.which === 13) { // 13 == enter
       if (event.currentTarget.value.replace(/\s/g, '').length){
-      Messages.insert({user: Meteor.user().username, text: event.currentTarget.value, timestamp: new Date()});
+      Messages.insert({user: Meteor.user().username, text: event.currentTarget.value, timestamp: new Date(TimeSync.serverTime())});
 
       // reset:
       event.currentTarget.value = "";
@@ -28,7 +28,7 @@ Template.simplechat.rendered = function() {
     this._rendered = true;
     document.getElementById("chatmessage").placeholder="Napiš zprávu a odešli Enterem";
   }
-  newchatmessages = Messages.find({'timestamp': {$gte: new Date()}}, {sort: {timestamp: 1}});
+  newchatmessages = Messages.find({'timestamp': {$gte: new Date(TimeSync.serverTime())}}, {sort: {timestamp: 1}});
   newchatmessages.observe({
     added: function (message) {
       $("#messages").animate({ scrollTop: $("#messages")[0].scrollHeight }, 600);

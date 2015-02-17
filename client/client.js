@@ -384,7 +384,7 @@ Template.tables.events({
           condiment_id: document.getElementsByName("frm_condiment").value,
           table_id: document.getElementsByName("frm_table").value,
           price: parseInt(document.getElementsByName("frm_price").value),
-          created: new Date(),
+          created: new Date(TimeSync.serverTime()),
           is_new: true,
           is_cancelled: false,
           is_cooked: false,
@@ -422,7 +422,7 @@ Template.orders.events({
         }
       } else if(order.author_id == Meteor.userId()){ // if in pub view
          if(order.is_cooked == true && order.is_cancelled == false){ //if cooked
-          Orders.update({_id: order._id}, {$set: {is_cooked: false, is_issued: true, issued: new Date()}}); // mark as issued
+          Orders.update({_id: order._id}, {$set: {is_cooked: false, is_issued: true, issued: new Date(TimeSync.serverTime())}}); // mark as issued
         }
       }
     },
@@ -440,7 +440,7 @@ Template.orders.events({
             condiment_id: order.condiment_id,
             table_id: order.table_id,
             price: parseInt(order.price),
-            created: new Date(),
+            created: new Date(TimeSync.serverTime()),
             is_new: true,
             is_cancelled: false,
             is_cooked: false,
