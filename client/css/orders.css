@@ -89,7 +89,8 @@ section#orders ul.orders li button{
 	text-shadow: rgba(0,0,0,.5) 0px 1px 0px;
 	background: transparent;
 	overflow: hidden;
-	padding: 0.2rem 0 0 0;
+	padding: 0;
+	line-height: 1rem;
 }
 
 section#orders ul.orders li:hover{
